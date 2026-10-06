@@ -2,7 +2,7 @@
 
 Game hành động Java ME, khung hình ngang 320 × 240, chương mở đầu **The Last Ember**. Sau phần giới thiệu và cảnh bước qua cổng, hiệp sĩ đối đầu với **Black Oathkeeper**, kẻ giữ ngọn lửa cuối cùng. Chiến thắng mở đường tới Heart of Dawn để khôi phục ánh sáng cho thế giới hậu tận thế.
 
-Đồ họa dùng pixel art theo ảnh hiệp sĩ tham khảo: giáp thép tím xám, bóng đậm, chi tiết kim loại và tỷ lệ cơ thể rõ. Nhân vật và boss dùng atlas hoạt ảnh; cảnh đổ nát, mặt đất nứt vỡ, sương và ánh lửa được vẽ bằng mã Java ME. Đây là cách thể hiện chất liệu và không khí dark fantasy ở độ phân giải nhỏ của E72. Không cần mạng, tài khoản hoặc tải thêm tài nguyên khi chơi.
+Đồ họa dùng pixel art theo ảnh hiệp sĩ tham khảo: giáp thép tím xám, bóng đậm, chi tiết kim loại và tỷ lệ cơ thể rõ. Nhân vật và boss dùng atlas hoạt ảnh; tầng hầm tối ẩm, nền đá cũ, ánh đèn yếu và giọt nước được vẽ bằng mã Java ME. Đây là cách thể hiện chất liệu và không khí dark fantasy ở độ phân giải nhỏ của E72. Không cần mạng, tài khoản hoặc tải thêm tài nguyên khi chơi.
 
 ## Cài trên Nokia E72
 
@@ -51,6 +51,12 @@ Hitbox và thông số chiến đấu không phụ thuộc pixel sprite. Vẫn n
 
 `tools/pack_boss_sprites.py` tách các hình riêng theo alpha từ hai nguồn trong suốt: 25 dáng lấy từ `boss_skeleton.png`, bảy khung bước có kiếm lấy từ bản AI đã sửa `boss_skeleton_walk_fixed.png` trong cùng thư mục. Công cụ thu nhỏ nearest-neighbor và neo đế giày ở `(112, 100)`. Atlas boss `res/boss-atlas.png` có 32 ô 224 × 112, kích thước 1792 × 448, alpha nhị phân và phần đệm giữ đủ lưỡi kiếm. Hai dáng chuẩn bị/chém sang trái dùng ảnh phía phải phản chiếu để đúng hướng. Metadata ghi nguồn của từng khung, vùng cắt, tỷ lệ và SHA-256 của cả hai ảnh trong `assets/boss-sheets/frames.json`. Tạo lại bằng `python3 tools/pack_boss_sprites.py`. `SkeletonBossArt` là phương án vẽ bằng mã nếu tài nguyên boss không tải được.
 
+## Phòng boss
+
+Black Oathkeeper đứng trong tầng hầm tối, ẩm và xuống cấp: trần vòm thấp, lối phía sau bị chặn bằng song sắt gỉ, tường loang nước và rêu mốc. Cửa thông gió, ống dẫn cũ, thùng vỡ và đá vụn nằm sát hai bên; năm vũng nước phản chiếu trên nền đá mòn. Hai đèn yếu chỉ soi một phần căn phòng. Nước nhỏ từ trần và tạo gợn vòng trên các vũng nước, cùng lớp sương lạnh mỏng chuyển động phía sau nhân vật.
+
+`ArenaArt` dựng sẵn toàn bộ nền tầng hầm và giữ trong bộ nhớ; mỗi khung chỉ vẽ thêm ánh đèn, giọt nước, gợn nước và sương. Cảnh báo đòn đánh dùng lớp trong suốt riêng, được tạo lại khi vùng nguy hiểm thay đổi, phủ lên cảnh và nằm dưới nhân vật. HUD được vẽ sau cảnh và nhân vật để giữ máu, bình và thanh boss rõ. Ống dẫn, thùng vỡ và đá vụn là trang trí, không thêm vật cản hoặc đổi hitbox chiến đấu. Xem `preview/arena-basement-test.png` và `preview/arena-basement-paused-test.png` được xuất bằng MIDP thật.
+
 ## Màn hình chính và giới thiệu cốt truyện
 
 Màn hình chính có nền tàn tích, ánh lửa và sương mù chuyển động. Lên/xuống hoặc W/S chuyển lựa chọn; J/phím giữa xác nhận. Có bắt đầu hành trình, điều khiển, bật/tắt âm thanh và thoát.
@@ -58,7 +64,7 @@ Màn hình chính có nền tàn tích, ánh lửa và sương mù chuyển đ�
 Xác nhận BEGIN JOURNEY sẽ mở ba cảnh pixel có chuyển mờ qua đen, mỗi cảnh 4,5 giây (tổng khoảng 13,5 giây):
 
 1. **The Fallen Kingdom**: mặt trời đã tắt, vương quốc hóa tro; một lời thề bị phá vỡ trói cả thế giới vào cái chết.
-2. **The Black Oath**: Oathkeeper giữ ngọn lửa cuối cùng. Sau cổng của hắn là Heart of Dawn, hy vọng khôi phục ánh sáng.
+2. **The Black Oath**: Oathkeeper giữ ngọn lửa cuối cùng trong tầng hầm ẩm tối. Sau cổng của hắn là Heart of Dawn, hy vọng khôi phục ánh sáng.
 3. **The Last Knight**: hiệp sĩ cuối cùng lên đường giành lại bình minh và cứu thế giới.
 
 J/phím giữa bỏ qua toàn bộ giới thiệu và chuyển tới cảnh bước qua cửa đá; P tạm dừng; Q trở về menu. Giới thiệu tự kết thúc rồi vào trận boss. Trong giới thiệu, người chơi không bị đánh hoặc tiêu hao bình máu. Chiến thắng thông báo con đường tới Heart of Dawn đã mở; bản này kết thúc ở trận boss mở đầu. Chơi lại sau thắng/thua vào cảnh cửa đá trực tiếp, không lặp đoạn cốt truyện. Chọn hành trình mới từ menu sẽ phát lại giới thiệu từ đầu.
@@ -123,6 +129,7 @@ Windows: mở `build.bat`; script tự tìm Python 3 đã cài và có thể dù
 - `src/BossSprites.java`: tải atlas 32 dáng boss, chọn hướng/trạng thái, giữ điểm chân và vẽ giật người/vòng sáng giai đoạn II.
 - `src/KnightArt.java`: bộ giáp vẽ bằng mã và các lời gọi chuyển tới bộ khung boss.
 - `src/SkeletonBossArt.java`: phương án boss bộ xương trong giáp vẽ bằng mã, cao 88 px, với điểm tay dùng chung với kiếm.
+- `src/ArenaArt.java`: nền tầng hầm được dựng sẵn, vòm thấp/song sắt/tường ẩm/ống cũ và ánh đèn, giọt nước, gợn nước, sương chuyển động phía sau nhân vật.
 - `src/Art.java`: đồ họa pixel, hoạt ảnh theo trạng thái, font bitmap, cảnh báo và HUD.
 - `src/Game.java`: nhận phím, tách nhấn mới khỏi giữ phím, vòng lặp, tạm dừng, âm thanh.
 - `src/AshGate.java`: vòng đời MIDlet.
@@ -130,7 +137,7 @@ Windows: mở `build.bat`; script tự tìm Python 3 đã cài và có thể dù
 - `preview/`: ảnh 320 × 240 được xuất từ renderer Java ME của bản JAR.
 - `TEST-RESULTS.txt`: kết quả kiểm tra của bản bàn giao.
 
-Mô phỏng dùng bước 33 ms (~30 lần/giây); thời gian thực tế được lượng tử theo bước này. Bản chậm sẽ không nhảy vượt toàn bộ một đòn để bù khung hình bị mất. Hình nền và lớp cảnh báo được cache; không cần tải sprite bên ngoài. Hiệu ứng âm thanh dùng `Manager.playTone` và tự bỏ qua khi máy không hỗ trợ.
+Mô phỏng dùng bước 33 ms (~30 lần/giây); thời gian thực tế được lượng tử theo bước này. Bản chậm sẽ không nhảy vượt toàn bộ một đòn để bù khung hình bị mất. Hình nền và lớp cảnh báo trong suốt được cache riêng; hiệu ứng không vẽ vào ảnh nền đã giữ. Không cần tải sprite bên ngoài. Hiệu ứng âm thanh dùng `Manager.playTone` và tự bỏ qua khi máy không hỗ trợ.
 
 ## Đã kiểm tra và giới hạn
 
@@ -141,6 +148,7 @@ Mô phỏng dùng bước 33 ms (~30 lần/giây); thời gian thực tế đư�
 - 16 kiểm tra nhấn hai lần: một lần không né, đủ hướng, chéo, cửa sổ 280 ms, giữ/tự lặp không né, cooldown, khóa khi chém/uống, tạm dừng/ra nền và loại bỏ phím né cũ.
 - Kiểm tra các dáng bốn hướng khác nhau, chu kỳ bước thay đổi và render các trạng thái chém, lăn, uống và chịu đòn ở cả bốn hướng.
 - Kiểm tra 32 dáng boss tải từ atlas thật: thân đứng 88 px so với nhân vật 44 px, xương nhìn rõ ở bốn hướng, alpha nhị phân, không cắt kiếm và kiếm vẫn hiện trong mọi khung bước, đế giày ổn định khi bước/chém/ngã; giật người và giai đoạn II vẫn dùng atlas. Kiểm tra khởi tạo, tiếp cận và lao về mép bắc ở cả hai giai đoạn để boss không lấn HUD; bộ khung dự phòng cũng được render riêng.
+- Kiểm tra nền phòng không đè lên nhân vật/HUD, hiệu ứng không tích lũy khi vẽ lại và khung tạm dừng ổn định. Lớp cảnh báo trong suốt của cả bốn đòn khớp đường biên vùng sát thương và xóa đúng vùng cũ khi đổi đòn/vị trí.
 - Xuất thành công 13 khung hình bằng implementation MIDP của MicroEmulator và kiểm tra bố cục trực quan.
 - Kiểm tra class version, StackMap, manifest không BOM và kích thước JAD khớp JAR.
 

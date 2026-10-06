@@ -12,81 +12,29 @@ public final class Art {
     }
     private void center(Graphics g,String s,int y,int c,int scale){text(g,s,(320-(s.length()*4-1)*scale)/2,y,c,scale);}
     private void rect(Graphics g,int c,int x,int y,int w,int h){g.setColor(c);g.fillRect(x,y,w,h);}
-    public Art(){
-        floor=Image.createImage(320,240);Graphics g=floor.getGraphics();
-        rect(g,0x11131c,0,0,320,240);
-        // Build the weathered arena once; fine stone texture costs no work per frame.
-        for(int y=47;y<222;y+=14)for(int x=-14;x<320;x+=28){
-            int xx=x+((y/14)%2)*14,k=((x+400)*17+y*13)%5;
-            int light=Math.max(0,9-Math.abs(xx-151)/19-Math.abs(y-130)/24);
-            rect(g,0x23232c+(k+light)*0x010101,xx+1,y+1,26,12);
-            g.setColor(0x38353f+light*0x010101);g.drawLine(xx+2,y+1,xx+25,y+1);
-            g.setColor(0x151822);g.drawLine(xx+2,y+12,xx+25,y+12);g.drawLine(xx+26,y+3,xx+26,y+11);
-            if(k<2){g.setColor(0x191c26);g.drawLine(xx+7,y+4,xx+12,y+7);g.drawLine(xx+12,y+7,xx+10,y+11);}
-            rect(g,0x41404a,xx+5+k*3,y+4+k,1,1);
-        }
-        // An extinguished sun seal in the floor; subdued beneath attack telegraphs.
-        g.setColor(0x544b49);g.drawArc(78,72,164,126,0,360);
-        g.setColor(0x3e383d);g.drawArc(81,75,158,120,0,360);g.drawArc(85,78,150,114,0,360);
-        g.setColor(0x49444b);g.drawArc(123,104,74,61,0,360);
-        for(int i=0;i<12;i++){
-            double a=i*Math.PI/6;int x=160+(int)(75*Math.cos(a)),y=135+(int)(57*Math.sin(a));
-            g.setColor(0x63544a);g.drawLine(x,y,x+(int)(5*Math.cos(a)),y+(int)(4*Math.sin(a)));
-            rect(g,0x82715b,x-1,y-1,2,2);
-        }
-        g.setColor(0x11151e);g.drawLine(95,157,122,150);g.drawLine(122,150,140,153);g.drawLine(140,153,157,140);
-        g.drawLine(220,84,202,101);g.drawLine(202,101,207,118);g.drawLine(207,118,198,126);
-        // The broken rear wall has recessed windows, eroded bevels and a torn standard.
-        for(int x=0;x<320;x+=32){
-            rect(g,0x3c3742,x,27,31,18);rect(g,0x625761,x+1,28,29,2);
-            rect(g,0x24232f,x+2,42,28,5);rect(g,0x161a24,x+5,46,23,5);
-            rect(g,0x4b434c,x+27,31,2,9);
-        }
-        for(int x=61;x<285;x+=88){
-            rect(g,0x181b28,x,29,22,13);rect(g,0x756471,x-2,28,2,14);rect(g,0x45404b,x+22,28,2,14);
-            rect(g,0x34303c,x+7,30,2,11);rect(g,0x34303c,x+14,30,2,11);
-        }
-        rect(g,0x65504e,152,29,19,2);rect(g,0x492e3d,155,31,13,24);rect(g,0x6b4050,156,32,2,16);
-        g.setColor(0x171b25);g.fillTriangle(159,50,161,56,163,49);g.fillTriangle(166,45,169,54,169,44);
-        rect(g,0x957559,160,37,3,5);rect(g,0x957559,158,39,7,1);
-        for(int y=45;y<223;y+=27){pillar(g,1,y);pillar(g,305,y);}
-        // Ash and masonry stay close to the edges, leaving the fight readable.
-        for(int i=0;i<42;i++){
-            int x=i%2==0?17+(i*19)%21:280+(i*13)%22,y=53+(i*47)%160;
-            rect(g,0x141822,x-2,y+2,7,3);rect(g,0x4b4148,x,y,4,3);rect(g,0x74616a,x,y,3,1);
-        }
-        for(int i=0;i<24;i++){int x=35+(i*83)%246,y=58+(i*47)%145;rect(g,0x151923,x,y,3,1);rect(g,0x504751,x+2,y-1,1,1);}
-        rect(g,0x10141e,0,222,320,18);rect(g,0x574750,15,219,290,3);rect(g,0x77635b,17,219,286,1);
-        // Foreground doorway, approached from below at the start.
-        rect(g,0x090c14,141,207,38,33);rect(g,0x514750,134,202,7,38);rect(g,0x867067,135,203,2,37);
-        rect(g,0x514750,179,202,7,38);rect(g,0x867067,180,203,2,37);rect(g,0x49404e,137,199,46,6);
-        rect(g,0x8b7064,138,199,43,1);
-        for(int y=208;y<240;y+=9){rect(g,0x262632,134,y,7,1);rect(g,0x262632,179,y,7,1);}
-        for(int x=35;x<300;x+=245){rect(g,0x453a3d,x-6,43,13,7);rect(g,0x191b25,x-5,50,11,5);}
-    }
-    void pillar(Graphics g,int x,int y){rect(g,0x151821,x,y,14,26);rect(g,0x4a4850,x+2,y,9,19);rect(g,0x636068,x+3,y+1,2,16);rect(g,0x303039,x+8,y+2,3,19);rect(g,0x69616a,x,y+19,14,3);}
+    public Art(){floor=ArenaArt.create();}
     void flame(Graphics g,int x,int y,int tick){int f=(tick/110)%3;rect(g,0x462928,x-5,y-6,11,12);rect(g,0x7b3d24,x-3,y-7-f,7,12);rect(g,0xd77833,x-2,y-5-f,5,9);rect(g,0xf9c467,x-1,y-3,3,6);rect(g,0x2c2730,x-4,y+5,9,3);}
     void telegraph(World w){
-        if(cached==w.hazardVersion)return;cached=w.hazardVersion;if(warned==null)warned=Image.createImage(320,240);Graphics g=warned.getGraphics();g.drawImage(floor,0,0,Graphics.TOP|Graphics.LEFT);
+        if(cached==w.hazardVersion)return;cached=w.hazardVersion;
+        int[] pixels=new int[320*240];
         for(int y=49;y<217;y++)for(int x=16;x<304;x++)if(w.inHazard(x,y,false)){
             boolean edge=!w.inHazard(x-1,y,false)||!w.inHazard(x+1,y,false)||!w.inHazard(x,y-1,false)||!w.inHazard(x,y+1,false);
-            if(edge||(x+y)%4==0){g.setColor(edge?0xffb560:0x963e3b);g.fillRect(x,y,1,1);}
+            if(edge||(x+y)%4==0)pixels[y*320+x]=edge?0xffffb560:0xff963e3b;
         }
+        warned=Image.createRGBImage(pixels,320,240,true);
     }
     public void draw(Graphics g,World w,boolean paused){
         if(w.mode==World.TITLE){mainMenu(g,w);return;}
         if(w.mode==World.STORY){story(g,w);if(paused){panel(g,42,88,236,67);center(g,"PAUSED",99,0xe5c992,2);center(g,"P - CONTINUE",128,0xd2c4b0,1);}return;}
         boolean hazard=w.mode==World.FIGHT&&(w.bstate==World.WARNING||w.bstate==World.ACTIVE);
-        if(hazard){telegraph(w);g.drawImage(warned,0,0,Graphics.TOP|Graphics.LEFT);}else g.drawImage(floor,0,0,Graphics.TOP|Graphics.LEFT);
-        flame(g,41,42,w.clock);flame(g,286,42,w.clock);
-        if(w.mode==World.INTRO){rect(g,0xd8b881,145,215,30,25);center(g,"THE GATE CLOSES BEHIND YOU",28,0xccb892,1);}
-        else{for(int i=0;i<6;i++)rect(g,0x62616a,143+i*6,207,2,33);}
+        g.drawImage(floor,0,0,Graphics.TOP|Graphics.LEFT);ArenaArt.ambient(g,w.clock);
+        if(w.mode==World.INTRO){rect(g,0x27322c,145,215,30,25);center(g,"THE GATE CLOSES BEHIND YOU",28,0xccb892,1);}
+        else{for(int i=0;i<6;i++){rect(g,0x50433a,143+i*6,207,2,33);rect(g,0x786046,143+i*6,210+i*2,2,2);}}
+        if(hazard){telegraph(w);g.drawImage(warned,0,0,Graphics.TOP|Graphics.LEFT);}
         if(hazard){
             if(w.bstate==World.ACTIVE){g.setColor(0xffe3a1);if(w.attack==3){int r=Balance.QUAKE_RADIUS*w.bt/Balance.ACTIVE[3];g.drawArc((int)w.ox-r,(int)w.oy-r,r*2,r*2,0,360);}else if(w.attack==1){for(int i=-2;i<=2;i++)g.drawLine((int)w.ox+i,(int)w.oy,(int)(w.ox+w.bdx*Balance.SLAM_LENGTH)+i,(int)(w.oy+w.bdy*Balance.SLAM_LENGTH));}}
         }
         if(w.py<w.by){hero(g,w);boss(g,w);}else{boss(g,w);hero(g,w);}
-        // Sparse drifting floor mist, kept away from warning interiors.
-        for(int i=0;i<4;i++){int x=(i*91+w.clock/95)%350-30,y=72+i*34;g.setColor(0x4a4850);g.drawLine(x,y,x+12,y);g.setColor(0x393b42);g.drawLine(x+8,y+2,x+28,y+2);}
         if(w.mode!=World.TITLE)hud(g,w);
         if(hazard){
             String[] names={"CRESCENT CLEAVE","EXECUTION","IRON CHARGE","ASHEN QUAKE"};
@@ -154,9 +102,7 @@ public final class Art {
             for(int i=0;i<5;i++)flame(g,86+i*38,140+(i%2)*9,w.clock+i*73);
             for(int i=0;i<13;i++)rect(g,0xae6c48,(i*53+w.clock/100)%320,147-(w.clock/65+i*17)%100,1,2);
         }else if(scene==1){
-            rect(g,0x1b1c28,76,40,168,119);rect(g,0x4b414b,91,48,10,103);rect(g,0x4b414b,219,48,10,103);rect(g,0x756068,93,49,2,101);rect(g,0x756068,221,49,2,101);
-            rect(g,0x392936,134,62,52,67);rect(g,0x69525a,134,62,3,67);rect(g,0x69525a,183,62,3,67);rect(g,0x352937,124,116,72,19);rect(g,0x57505a,100,141,120,5);rect(g,0x35313e,92,147,136,6);
-            flame(g,105,82,w.clock);flame(g,216,82,w.clock);
+            g.drawImage(floor,0,0,Graphics.TOP|Graphics.LEFT);ArenaArt.ambient(g,w.clock);
             actors.mode=World.FIGHT;actors.clock=w.clock;actors.bx=160;actors.by=138;actors.bstate=World.PREPARE;actors.bdx=0;actors.bdy=1;actors.phase=1;boss(g,actors);
         }else{
             rect(g,0x292a35,106,38,108,124);rect(g,0x080c14,134,55,52,106);

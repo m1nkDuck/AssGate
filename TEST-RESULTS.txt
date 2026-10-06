@@ -87,6 +87,8 @@ PASS: Native walk, attack and hurt keep planted soles and attached hands; phase 
 PASS: Spawn, seeking and northward charges preserve the visible boss boundary in both phases.
 PASS: Production boss has 32 complete binary-alpha poses, 88px idle height, exposed bones and four distinct facings.
 PASS: Production walking, sword windup/strike, hit recoil, phase II and victory select the atlas and preserve ground anchors.
+PASS: Damp basement stays behind actors, preserves HUD, and redraws without accumulating ambient at running or paused clocks.
+PASS: Four transparent telegraph masks match collision boundaries, remain visible above scenery, and invalidate without stale pixels.
 PASS: One movement tap does not roll
 PASS: Double tap rolls right even if released before tick
 PASS: Holding and repeated presses only move

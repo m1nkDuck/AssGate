@@ -33,6 +33,12 @@ public final class BossPreview {
         }
         // Inspect real spawn and north edge as well as the story reveal.
         w.reset();Image spawn=Image.createImage(320,240);art.draw(spawn.getGraphics(),w,false);save(spawn,"boss-spawn");
+        save(ArenaArt.create(),"arena-empty");
+        for(int i=0;i<24;i++){
+            w.reset();w.mode=World.FIGHT;w.bstate=World.TRANSITION;
+            w.px=79;w.py=197;w.fx=0;w.fy=1;w.bx=179;w.by=168;w.bdx=0;w.bdy=1;w.clock=i*110;
+            Image room=Image.createImage(320,240);art.draw(room.getGraphics(),w,false);save(room,"arena-ambient-"+i);
+        }
         System.out.println("Exported boss/hero comparison, 40 arena poses and initial spawn.");System.exit(0);
     }
 }

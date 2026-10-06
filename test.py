@@ -16,7 +16,7 @@ def run(*a):
  print(p.stdout,end='');p.check_returncode();return p.stdout
 log=run(sys.executable,'-m','unittest','discover','-s','tests','-p','test_*.py')
 log+=run(java,'-jar',r/'tools/ecj.jar','-source','1.8','-target','1.8','-cp',cp,'-d',r/'build/tests',*sorted((r/'tests').glob('*.java')))
-for name in ['CombatTest','InputTest','StoryTest','RenderTest','DirectionTest','BossArtTest','DoubleTapTest','RollImmunityTest','AtlasTest','DeathTest']:
+for name in ['CombatTest','InputTest','StoryTest','RenderTest','DirectionTest','BossArtTest','ArenaArtTest','DoubleTapTest','RollImmunityTest','AtlasTest','DeathTest']:
  log+=run(java,'-Djava.awt.headless=true','-cp',cp,name)
 j=r/'dist/AshGate.jar';z=zipfile.ZipFile(j)
 for name in z.namelist():
