@@ -1,0 +1,125 @@
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+PASS: Sword windup does no damage
+PASS: Sword active hits once
+PASS: No repeat from the same attack
+PASS: Facing away misses
+PASS: Out of sword range misses
+PASS: Roll immunity starts immediately
+PASS: Short roll travels 32.4 pixels
+PASS: Roll cooldown outlasts roll
+PASS: Cooldown rejects repeated dodge
+PASS: Roll uses diagonal movement direction
+PASS: Post-hit immunity prevents stacked damage
+PASS: Post-hit immunity expires
+PASS: Flask consumed on start
+PASS: No early healing
+PASS: Cannot attack or dodge while drinking
+PASS: Heal restores forty percent after one second
+PASS: Healing capped at max HP
+PASS: Hit interrupts healing without refund
+PASS: Empty flask cannot heal
+PASS: Full health cannot waste flask
+PASS: Attack 0 direction stays locked
+PASS: Attack 0 warning does not hurt
+PASS: Attack 0 active hits marked area
+PASS: Attack 0 cannot hit twice
+PASS: Attack 0 has recovery opening
+PASS: Attack 1 direction stays locked
+PASS: Attack 1 warning does not hurt
+PASS: Attack 1 active hits marked area
+PASS: Attack 1 cannot hit twice
+PASS: Attack 1 has recovery opening
+PASS: Attack 2 direction stays locked
+PASS: Attack 2 warning does not hurt
+PASS: Attack 2 active hits marked area
+PASS: Attack 2 cannot hit twice
+PASS: Attack 2 has recovery opening
+PASS: Attack 3 direction stays locked
+PASS: Attack 3 warning does not hurt
+PASS: Attack 3 active hits marked area
+PASS: Attack 3 cannot hit twice
+PASS: Attack 3 has recovery opening
+PASS: Slam outside body footprint is safe
+PASS: Slam edge includes body radius
+PASS: Phase two starts below half HP
+PASS: Phase two retains readable warnings
+PASS: Exactly half HP does not start phase two
+PASS: Attack sequence avoids excessive repeats
+PASS: Arena boundary clamps player
+PASS: Zero HP triggers defeat
+PASS: Retry completely resets combat
+PASS: Retry clears previous cinematic time
+PASS: Final sword hit triggers victory
+ALL 51 CHECKS PASSED
+PASS: Title enters arena through intro
+PASS: Holding and auto-repeat cause only ONE slash
+PASS: Release then press permits next slash
+PASS: Pause freezes gameplay
+PASS: Simultaneous keys move diagonally
+PASS: Quit during fight returns to title
+PASS: Help returns to title
+ALL 7 INPUT CHECKS PASSED
+PASS: Menu selects controls
+PASS: Controls returns to menu
+PASS: Sound option toggles without starting game
+PASS: Confirm journey enters story before arena
+PASS: Combat remains frozen during story
+PASS: Pause freezes cinematic timer
+PASS: Skip leads to doorway introduction
+PASS: Doorway completes into boss fight
+PASS: Returning from background does not freeze title
+PASS: Cancel cinematic returns to main menu
+PASS: New journey restarts story from first scene
+PASS: First scene advances to second
+PASS: Second scene advances to third
+PASS: Full cinematic auto-completes into doorway
+PASS: Retry resets fight and avoids repeating cinematic
+ALL 15 STORY/MENU CHECKS PASSED
+Rendered 13 real MIDP frames successfully.
+PASS: Knight and boss have four distinct facings and alternating walk frames.
+PASS: Sword, roll, healing and hurt render safely in every facing.
+PASS: Native skeleton fallback is 88px versus 44px hero; exposed bones in four distinct directions.
+PASS: Native walk, attack and hurt keep planted soles and attached hands; phase II and fallen remain readable.
+PASS: Spawn, seeking and northward charges preserve the visible boss boundary in both phases.
+PASS: Production boss has 32 complete binary-alpha poses, 88px idle height, exposed bones and four distinct facings.
+PASS: Production walking, sword windup/strike, hit recoil, phase II and victory select the atlas and preserve ground anchors.
+PASS: One movement tap does not roll
+PASS: Double tap rolls right even if released before tick
+PASS: Holding and repeated presses only move
+PASS: Late second tap is rejected
+PASS: Different directions do not count as a pair
+PASS: Double tap includes 280ms boundary
+PASS: Double tap diagonal key rolls diagonally
+PASS: Down double tap rolls down
+PASS: Up double tap rolls up
+PASS: Double tap still obeys roll cooldown
+PASS: Double tap cannot interrupt drinking
+PASS: Double tap cannot cancel sword recovery
+PASS: Old roll buttons no longer roll
+PASS: Pause clears unfinished double tap
+PASS: Backgrounding clears unfinished double tap
+PASS: Menu presses do not roll
+ALL 16 DOUBLE-TAP CHECKS PASSED
+PASS: Roll blocks damage at 0ms
+PASS: Roll blocks damage at 299ms
+PASS: Roll blocks damage at 300ms
+PASS: Roll blocks damage at 359ms
+PASS: Late roll blocks boss attack 0
+PASS: Boss attack 0 can hit when roll ends
+PASS: Late roll blocks boss attack 1
+PASS: Boss attack 1 can hit when roll ends
+PASS: Late roll blocks boss attack 2
+PASS: Boss attack 2 can hit when roll ends
+PASS: Late roll blocks boss attack 3
+PASS: Boss attack 3 can hit when roll ends
+PASS: Immunity ends exactly with roll state
+PASS: No extra immunity after the roll
+ALL 14 FULL-ROLL IMMUNITY CHECKS PASSED
+PASS: All 144 sprite frames load, render and preserve transparency.
+PASS: All 96 matched idle/heal/attack/walk frames render with binary alpha, stable ground anchors, clear sword tips and contrasting backgrounds.
+PASS: Death six-frame order, last-frame hold, frozen combat and retry reset.
+PASS: CLDC class version 45; StackMap preverification; BOM-free manifest; exact JAD size.

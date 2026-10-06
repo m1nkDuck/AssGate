@@ -1,0 +1,19 @@
+# Local build and asset-generation intermediates
+/build/
+/output/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

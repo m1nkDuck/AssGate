@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+MIDlet-Name: AshGate
+MIDlet-Version: 1.9.0
+MIDlet-Vendor: AshGate Studio
+MIDlet-1: AshGate,,AshGate
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
+Nokia-MIDlet-Original-Display-Size: 320,240
+Nokia-MIDlet-Target-Display-Size: 320,240
+MIDlet-Description: The Black Oath - single boss action game
+MIDlet-Jar-URL: AshGate.jar
+MIDlet-Jar-Size: 766168
