@@ -7,7 +7,7 @@ try:
     java=find_java()
 except RuntimeError as error:
     raise SystemExit(str(error))
-for required in ['tools/ecj.jar','tools/proguard.jar','tools/cldc.jar','tools/midp.jar','res/hero-atlas.png','res/boss-atlas.png']:
+for required in ['tools/ecj.jar','tools/proguard.jar','tools/cldc.jar','tools/midp.jar','res/hero-atlas.png','res/hero-rest-atlas.png','res/boss-atlas.png','res/belfry-guard-atlas.png','res/belfry-spearman-atlas.png','res/bellbound-atlas.png']:
     if not (root/required).is_file():
         raise SystemExit('Missing required file: '+required+'. Extract the complete AshGate source package.')
 classes=root/'build/classes'
@@ -17,7 +17,7 @@ classes.mkdir(parents=True)
 def run(*args): subprocess.run(list(map(str,args)),cwd=root,check=True)
 boot=str(root/'tools/cldc.jar')+__import__('os').pathsep+str(root/'tools/midp.jar')
 run(java,'-jar',root/'tools/ecj.jar','-source','1.3','-target','1.1','-encoding','UTF-8','-bootclasspath',boot,'-d',classes,*sorted((root/'src').glob('*.java')))
-manifest='\r\n'.join(['Manifest-Version: 1.0','MIDlet-Name: AshGate','MIDlet-Version: 1.9.0','MIDlet-Vendor: AshGate Studio','MIDlet-1: AshGate,,AshGate','MicroEdition-Configuration: CLDC-1.1','MicroEdition-Profile: MIDP-2.0','Nokia-MIDlet-Original-Display-Size: 320,240','Nokia-MIDlet-Target-Display-Size: 320,240','MIDlet-Description: The Black Oath - single boss action game','',''])
+manifest='\r\n'.join(['Manifest-Version: 1.0','MIDlet-Name: AshGate','MIDlet-Version: 1.13.0','MIDlet-Vendor: AshGate Studio','MIDlet-1: AshGate,,AshGate','MicroEdition-Configuration: CLDC-1.1','MicroEdition-Profile: MIDP-2.0','Nokia-MIDlet-Original-Display-Size: 320,240','Nokia-MIDlet-Target-Display-Size: 320,240','MIDlet-Description: The Black Oath - The Ashen Belfry','',''])
 with zipfile.ZipFile(root/'build/raw.jar','w',zipfile.ZIP_DEFLATED) as z:
     z.writestr('META-INF/MANIFEST.MF',manifest.encode('ascii'))
     for p in classes.rglob('*.class'):z.write(p,p.relative_to(classes))

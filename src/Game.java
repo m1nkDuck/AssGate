@@ -38,7 +38,7 @@ public final class Game extends Canvas implements Runnable {
     protected synchronized void keyPressed(int code){keyPressedAt(code,System.currentTimeMillis());}
     synchronized void keyPressedAt(int code,long now){
         int b=map(code),fresh=b&~held;
-        if((b&(U|D|L|R))!=0&&fresh==b&&world.mode==World.FIGHT&&!paused&&!help){
+        if((b&(U|D|L|R))!=0&&fresh==b&&world.isCombat()&&(world.mode!=World.BELFRY||world.belfry.wakeTime>=Balance.CAMP_WAKE_TIME)&&!paused&&!help){
             long gap=now-lastTapTime;
             if(lastTapDirection==b&&gap>=0&&gap<=Balance.DOUBLE_TAP_TIME){
                 pendingRoll=b;lastTapDirection=0;lastTapTime=0;
@@ -52,7 +52,7 @@ public final class Game extends Canvas implements Runnable {
     private synchronized int movement(){return held;}
     synchronized void tick(){
         int e=consume(),h=movement(),rollDirection=pendingRoll;pendingRoll=0;
-        if(world.mode!=World.FIGHT){clearRollGesture();rollDirection=0;}
+        if(!world.isCombat()||(world.mode==World.BELFRY&&world.belfry.wakeTime<Balance.CAMP_WAKE_TIME)){clearRollGesture();rollDirection=0;}
         if((e&MUTE)!=0){sound=!sound;world.soundOn=sound;}
         if(help){if((e&(A|HELP|QUIT))!=0){help=false;world.mode=helpReturn;}return;}
         if((e&HELP)!=0&&world.mode==World.TITLE){helpReturn=world.mode;help=true;return;}
@@ -70,16 +70,18 @@ public final class Game extends Canvas implements Runnable {
             }
         }
         if((e&A)!=0&&world.mode==World.STORY){world.finishStory();held=edges=0;clearRollGesture();return;}
-        if((e&A)!=0&&(world.mode==World.WIN||world.mode==World.LOSE)&&world.deathTime>Balance.DEATH_TIME){world.reset();held=edges=0;clearRollGesture();return;}
         int mx=((h&R)!=0?1:0)-((h&L)!=0?1:0),my=((h&D)!=0?1:0)-((h&U)!=0?1:0);
                 if(rollDirection!=0){
             mx=((rollDirection&R)!=0?1:0)-((rollDirection&L)!=0?1:0);
             my=((rollDirection&D)!=0?1:0)-((rollDirection&U)!=0?1:0);
         }
+        int modeBefore=world.mode,roomBefore=world.belfry.room;
         world.update(Balance.STEP,mx,my,(e&A)!=0,rollDirection!=0,(e&H)!=0);
+        if(world.mode!=modeBefore||world.belfry.room!=roomBefore){held=edges=0;clearRollGesture();}
         if(sound&&world.events!=0){try{
-            int note=(world.events&World.HIT)!=0?42:(world.events&World.BOSS_HIT)!=0?68:(world.events&World.DRINK)!=0?81:(world.events&World.PHASE)!=0?38:(world.events&World.END)!=0?60:(world.events&World.TELEGRAPH)!=0?54:48;
-            Manager.playTone(note,45,35);
+            boolean bell=(world.events&World.BELL)!=0&&(world.events&(World.HIT|World.BOSS_HIT|World.DRINK|World.PHASE|World.END))==0;
+            int note=(world.events&World.HIT)!=0?42:(world.events&World.BOSS_HIT)!=0?68:(world.events&World.DRINK)!=0?81:(world.events&World.PHASE)!=0?38:(world.events&World.END)!=0?60:bell?46:(world.events&World.TELEGRAPH)!=0?54:48;
+            Manager.playTone(note,bell?180:45,35);
         }catch(Exception ignored){}}
     }
     public void run(){

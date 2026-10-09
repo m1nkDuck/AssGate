@@ -18,13 +18,31 @@ public final class CombatTest {
         w=arena();w.update(33,0,0,false,false,true);check(w.potions==3,"Full health cannot waste flask");
         for(int attack=0;attack<4;attack++){
             w=arena();w.attack=attack;w.px=160;w.py=120;w.lockAttack();float dx=w.bdx,dy=w.bdy;
-            w.px=210;w.py=150;ticks(w,10);check(w.bdx==dx&&w.bdy==dy,"Attack "+attack+" direction stays locked");
+            w.px=210;w.py=150;w.update(w.warningTime()/3,0,0,false,false,false);check(w.bdx==dx&&w.bdy==dy,"Attack "+attack+" direction stays locked");
             w.px=160;w.py=120;while(w.bstate==World.WARNING)w.update(33,0,0,false,false,false);check(w.hp==100,"Attack "+attack+" warning does not hurt");
-            w.update(33,0,0,false,false,false);check(w.hp==100-Balance.DAMAGE[attack],"Attack "+attack+" active hits marked area");ticks(w,15);check(w.hp==100-Balance.DAMAGE[attack],"Attack "+attack+" cannot hit twice");check(w.bstate==World.RECOVER,"Attack "+attack+" has recovery opening");
+            w.update(33,0,0,false,false,false);check(w.hp==Balance.PLAYER_HP-Balance.DAMAGE[attack],"Attack "+attack+" active hits marked area");
+            while(w.bstate==World.ACTIVE)w.update(33,0,0,false,false,false);
+            check(w.hp==Balance.PLAYER_HP-Balance.DAMAGE[attack],"Attack "+attack+" cannot hit twice");check(w.bstate==World.RECOVER,"Attack "+attack+" has recovery opening");
+            w.update(w.recoveryTime()-1,0,0,false,false,false);check(w.bstate==World.RECOVER,"Attack "+attack+" keeps its entire recovery window");
+            w.update(1,0,0,false,false,false);check(w.bstate==World.SEEK,"Attack "+attack+" ends recovery at its configured boundary");
         }
-        w=arena();w.attack=1;w.bdx=0;w.bdy=1;w.ox=160;w.oy=100;w.px=176;w.py=140;check(!w.hazardHitsPlayer(),"Slam outside body footprint is safe");w.px=175;check(w.hazardHitsPlayer(),"Slam edge includes body radius");
-        w=arena();w.bossHp=359;w.bstate=World.RECOVER;w.update(33,0,0,false,false,false);check(w.phase==2&&w.bstate==World.TRANSITION,"Phase two starts below half HP");check(w.warningTime()>=600,"Phase two retains readable warnings");
-        w=arena();w.bossHp=360;w.bstate=World.RECOVER;w.update(33,0,0,false,false,false);check(w.phase==1,"Exactly half HP does not start phase two");
+        w=arena();w.attack=1;w.bdx=0;w.bdy=1;w.ox=160;w.oy=100;w.px=w.ox+Balance.SLAM_HALF_WIDTH+Balance.PLAYER_RADIUS+1;w.py=140;check(!w.hazardHitsPlayer(),"Slam outside body footprint is safe");w.px-=1;check(w.hazardHitsPlayer(),"Slam edge includes body radius");
+        w=arena();w.bossHp=Balance.BOSS_HP/2-1;w.bstate=World.RECOVER;w.update(33,0,0,false,false,false);check(w.phase==2&&w.bstate==World.TRANSITION,"Phase two starts below half HP");check(w.warningTime()>Balance.STEP&&w.warningTime()<Balance.WARN[w.attack],"Phase two retains a warning and accelerates its timing");
+        w=arena();w.bossHp=Balance.BOSS_HP/2;w.bstate=World.RECOVER;w.update(33,0,0,false,false,false);check(w.phase==1,"Exactly half HP does not start phase two");
+        int[] oldDamage={22,32,25,28},oldWarning={800,900,1000,1000},oldRecovery={850,950,1000,1100};
+        for(int attack=0;attack<4;attack++){
+            check(Balance.DAMAGE[attack]>oldDamage[attack],"Harder boss attack "+attack+" deals more damage than before");
+            check(Balance.WARN[attack]<oldWarning[attack]&&Balance.RECOVERY[attack]<oldRecovery[attack],"Harder boss attack "+attack+" warns and recovers faster than before");
+        }
+        w=arena();w.ox=80;w.oy=130;w.bdx=1;w.bdy=0;w.attack=0;
+        check(w.inHazard(w.ox+54,w.oy,false),"Sweep covers ground beyond the previous 53-pixel radius");
+        check(!w.inHazard(w.ox+Balance.SWEEP_RADIUS+1,w.oy,false),"Sweep still has an exact outer edge");
+        w.attack=1;check(w.inHazard(w.ox+95,w.oy,false)&&w.inHazard(w.ox+40,w.oy+11,false),"Slam is longer and wider than before");
+        check(!w.inHazard(w.ox+Balance.SLAM_LENGTH+1,w.oy,false),"Slam still ends at its configured length");
+        w.attack=2;w.chargeLength=Balance.DASH_LENGTH;
+        check(w.inHazard(w.ox+125,w.oy,false)&&w.inHazard(w.ox+40,w.oy+13,false),"Dash is longer and wider than before");
+        w.attack=3;check(w.inHazard(w.ox+62,w.oy,false),"Quake covers ground beyond the previous 61-pixel radius");
+        check(!w.inHazard(w.ox+Balance.QUAKE_RADIUS+1,w.oy,false),"Quake still has an exact outer edge");
         w=arena();int last=-1,run=0,max=0;for(int i=0;i<100;i++){w.chooseAttack();run=w.attack==last?run+1:1;last=w.attack;max=Math.max(max,run);}check(max<=2,"Attack sequence avoids excessive repeats");
         w=arena();for(int i=0;i<200;i++)w.update(33,-1,1,false,false,false);check(w.px>=21&&w.py<=211,"Arena boundary clamps player");
         w=arena();w.hp=1;w.takeDamage(22);check(w.mode==World.LOSE,"Zero HP triggers defeat");w.storyTime=4500;w.reset();check(w.hp==100&&w.bossHp==720&&w.potions==3&&w.inv==0&&w.dodgeCd==0&&w.phase==1&&w.bstate==World.SEEK&&w.mode==World.INTRO,"Retry completely resets combat");check(w.storyTime==0,"Retry clears previous cinematic time");

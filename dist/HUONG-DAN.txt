@@ -1,5 +1,5 @@
-ASHGATE: THE BLACK OATH — bản chơi thử 1.9.0
-Chương I: The Last Ember
+ASHGATE: THE BLACK OATH — bản chơi thử 1.13.0
+The Last Ember / Tháp Chuông Tro Tàn — The Ashen Belfry
 
 Java ME cho Nokia E72, màn hình ngang 320 x 240, CLDC 1.1 / MIDP 2.0.
 
@@ -13,13 +13,63 @@ CỐT TRUYỆN VÀ MÀN CHƠI
 Mặt trời đã tắt, vương quốc trở thành tro. Một lời thề đổ vỡ trói thế giới
 vào cái chết. Bạn là hiệp sĩ cuối cùng, đi tìm Heart of Dawn để khôi phục
 bình minh. Sau ba cảnh giới thiệu, bạn bước qua cổng và đối đầu ngay với
-Black Oathkeeper: boss có bốn đòn tấn công và hai giai đoạn.
-Chiến thắng mở con đường tiếp theo trong cốt truyện. Bản chơi thử này
-chứa một đấu trường boss; chưa có các chương tiếp theo.
+Black Oathkeeper: boss có bốn đòn tấn công và hai giai đoạn, phạm vi rộng,
+sát thương lớn, nhịp tấn công nhanh; boss vẫn có thể bị đánh bại.
+Thua trận: hiệp sĩ ngã, cảnh mờ sang đen rồi tỉnh dậy bên lửa trại.
+Thắng trận: hiệp sĩ đứng khoảng 5 giây bên boss đã ngã, rồi kiệt sức
+và chuyển qua cùng chuỗi ngất, màn hình đen, tỉnh dậy bên lửa trại.
+Chuyển cảnh tự động, không cần nhấn phím. Trong lúc ngất hoặc tỉnh dậy
+không thể di chuyển hay đánh. Sau khi tỉnh dậy có thể đi lại trong khu
+nghỉ an toàn với 100 HP và 3 bình. Dù thắng hay thua, lối phía trên bên
+trái khu nghỉ đều mở tới Tháp Chuông Tro Tàn. Đi gần và nhấn J/phím giữa/5.
+Black Oathkeeper chỉ xuất hiện một lần trong mỗi hành trình. Cổng cũ đã
+sập; không thể tái đấu khi quay lại trại hay chết ở màn sau. Chỉ chọn
+BEGIN JOURNEY để bắt đầu hành trình mới mới gặp lại boss mở đầu.
+
+THÁP CHUÔNG TRO TÀN
+“The bells still toll. But this place has never known dawn.”
+Câu dẫn cỡ nhỏ nằm ở nửa dưới, hiện 1,8 giây khi lần đầu bước vào phòng.
+Quay lại hoặc hồi sinh không hiện lại; hành trình mới đặt lại lần đầu.
+Năm khu nối liền, mỗi khu vừa một màn hình:
+1. Bậc thềm phủ tro: vài giây khám phá yên tĩnh, rồi một lính gác.
+2. Hành lang đèn tắt: đài lửa thứ nhất, hai lính xuất hiện lần lượt.
+3. Sân chuông đổ: chuông là vật cản, đi vòng trên hoặc dưới; đài thứ hai
+   ở bên phải. Có một bình máu và lời khắc trên đường vòng.
+4. Phòng kéo chuông: thắp đài thứ ba đánh thức lính cầm thương.
+   Đủ cả ba đài và hạ lính sẽ mở cầu. Điểm nghỉ cạnh cầu hồi đầy máu/bình.
+5. Đỉnh tháp: Kẻ Kéo Chuông — The Bellbound, 600 HP, ba đòn riêng.
+
+J/phím giữa/5 để thắp hoặc đọc lại đài lửa, nhặt bình, đọc lời khắc,
+nghỉ và qua cửa khi đứng gần; ở nơi khác, cùng phím dùng để chém.
+Ba ô đèn trên HUD cho biết số đài đã thắp. Có thể quay lại khu trước.
+Đài đã thắp cháy suốt hành trình. Trong vùng sáng bán kính 78 px,
+giáp địch hiện rõ và tốc độ giảm từ 25 xuống 13 px/giây. Dụ chúng về lửa.
+Cảnh báo đỏ viền vàng luôn rõ, kể cả trong tối. Lời kể không che sàn đấu.
+
+Lính gác kiếm/khiên cao 44 px, lính thương cao 48 px; mỗi loại có 32 dáng
+đứng, đi, chuẩn bị, đánh và ngã theo bốn hướng. Bellbound cao 70 px, có
+40 dáng thân cho bước nặng, quét xích, nện chùy, hồi chuông và ngã.
+Trong tối vẫn thấy bóng giáp chuyển động; đến gần đài lửa để nhìn rõ.
+
+Bellbound quét xích hình quạt (24 sát thương), nện chùy vào vị trí khóa
+(34 sát thương), hoặc tạo bốn vòng chuông tang lan lần lượt (22 mỗi vòng).
+Quét xích để hở phía sau lưng; đòn nện mắc chùy vào nền tạo lúc phản công.
+Các vòng có cảnh báo riêng; lăn xuyên đúng lúc hoặc tránh vòng đang báo.
+Ở nửa máu, chuông trần rơi thành vật cản; phải đổi đường tiếp cận.
+Boss giữ bộ đòn cũ nhưng nối đòn nhanh hơn. Mỗi nhát chém vẫn gây 24.
+
+Thắng nhận Mảnh Bình Minh đầu tiên đúng một lần, chuông im, vệt đỏ
+bắt đầu chuyển động: thứ bên trong Heart of Dawn đang thở. Sau 3 giây,
+nhấn J để về trại. Phần bên trong Heart of Dawn chưa có trong bản này.
+Chết trước lính tinh nhuệ sẽ tỉnh ở bậc thềm; sau đó ở điểm nghỉ trước
+boss. Đài lửa, lính đã hạ và đồ đã nhặt được giữ trong phiên chơi.
+Bellbound chưa hạ sẽ đầy máu khi thử lại. Chọn BEGIN JOURNEY mới hoặc thoát
+ứng dụng sẽ mất tiến trình; chưa có tính năng lưu vào điện thoại.
 
 ĐIỀU KHIỂN
 - D-pad hoặc W/A/S/D: di chuyển.
-- Phím giữa D-pad, J hoặc 5: chém / xác nhận / bỏ qua giới thiệu.
+- Phím giữa D-pad, J hoặc 5: chém / xác nhận / bỏ qua giới thiệu;
+  đứng gần lửa, đài lửa, lời khắc, vật phẩm hoặc cổng để tương tác.
 - Nhấn, thả rồi nhấn lại cùng hướng nhanh trong 280 ms: lăn né.
 - L hoặc 2: uống bình hồi máu (có 3 bình, cần một giây).
 - P hoặc phím mềm trái: tạm dừng.
@@ -27,17 +77,37 @@ chứa một đấu trường boss; chưa có các chương tiếp theo.
 - Q hoặc phím mềm phải: về menu; ở menu thì thoát.
 - 1/3/7/9: di chuyển chéo khi máy khó nhận hai phím đồng thời.
 
+LỬA TRẠI
+- Đứng cách lửa giữa khu nghỉ tối đa 45 pixel, nhấn J/phím giữa/5:
+  hồi đầy 100 HP và cả 3 bình ngay, rồi ngồi xuống trong 720 ms.
+  Hiệp sĩ giữ tư thế ngồi, thở nhẹ; hoạt ảnh có bốn hướng cùng bảng màu.
+  Nếu đứng quá sát tâm lửa, hiệp sĩ dịch ngắn ra vành 38 pixel trước
+  khi ngồi; vị trí ngoài vành được giữ nguyên.
+- Khi đang ngồi, nhấn J/phím giữa/5 lần nữa hoặc một hướng di chuyển
+  để đứng dậy trong 720 ms. Vị trí giữ nguyên trong lúc ngồi xuống
+  và đứng lên; chỉ di chuyển được khi đã đứng thẳng.
+- Cổng phía trên bên phải đã sập; không thể quay lại boss mở đầu.
+- Sau thắng hoặc thua, lối phía trên bên trái mở sang tháp chuông.
+- P vẫn tạm dừng; Q về menu. Không có kẻ địch hay sát thương trong khu nghỉ.
+- L/2 và nhấn hai lần hướng không uống bình hoặc lăn trong khu nghỉ.
+
 MẸO
 Vùng gạch đỏ viền vàng là phạm vi đòn boss. Né ra khỏi vùng trước khi đòn
 đánh bắt đầu, hoặc lăn xuyên đòn. Chữ OPEN báo cơ hội phản công.
 Uống bình có thể bị ngắt khi trúng đòn. Boss đổi nhịp khi dưới nửa máu.
+Boss có 720 HP; mỗi nhát chém trúng gây 24 sát thương, cần 30 nhát.
+Lăn miễn sát thương suốt 360 ms nhưng chỉ lăn tiếp khi thanh ROLL đầy.
+Chém ngang/bổ kiếm/lao/đập đất gây lần lượt 45/62/52/58 sát thương.
+Cảnh báo ở giai đoạn I là 430/500/550/580 ms; giai đoạn II nhanh hơn 100 ms.
+Phạm vi chém ngang 82 px, bổ 145 px, lao tối đa 175 px, đập đất 96 px.
+Boss hồi phục ngắn hơn sau đòn: phản công nhanh rồi chuẩn bị né tiếp.
 
 ĐÃ KIỂM TRA
 Biên dịch với API CLDC/MIDP và preverify; bộ kiểm tra chiến đấu, điều khiển,
 cốt truyện, hoạt ảnh và render bằng MicroEmulator đều đạt.
 Chưa thử trên Nokia E72 thật; FPS, phím và âm thanh cần kiểm tra trên máy.
 Đây là MIDlet .jar/.jad, không phải gói Symbian .sis/.sisx.
-Chữ trong game là tiếng Anh để rõ trên màn hình nhỏ.
+Giao diện và câu dẫn trong game dùng tiếng Anh.
 
 CHƠI THỬ TRÊN WINDOWS
 Trong thư mục mã nguồn đầy đủ, mở play-desktop.bat. Cần Java 8 trở lên;

@@ -16,13 +16,14 @@ def run(*a):
  print(p.stdout,end='');p.check_returncode();return p.stdout
 log=run(sys.executable,'-m','unittest','discover','-s','tests','-p','test_*.py')
 log+=run(java,'-jar',r/'tools/ecj.jar','-source','1.8','-target','1.8','-cp',cp,'-d',r/'build/tests',*sorted((r/'tests').glob('*.java')))
-for name in ['CombatTest','InputTest','StoryTest','RenderTest','DirectionTest','BossArtTest','ArenaArtTest','DoubleTapTest','RollImmunityTest','AtlasTest','DeathTest']:
+for name in ['CombatTest','InputTest','StoryTest','BonfireTest','OpeningOnceTest','BelfryTest','BellboundTest','RenderTest','BelfryRenderTest','RestArtTest','EnemySpritesTest','BellboundSpritesTest','DirectionTest','BossArtTest','ArenaArtTest','DoubleTapTest','RollImmunityTest','AtlasTest','DeathTest']:
  log+=run(java,'-Djava.awt.headless=true','-cp',cp,name)
 j=r/'dist/AshGate.jar';z=zipfile.ZipFile(j)
 for name in z.namelist():
  if name.endswith('.class'):
   data=z.read(name);assert struct.unpack('>H',data[6:8])[0]==45
-  if name!='Balance.class':assert b'StackMap' in data
+  # Constants and the branch-free enemy data constructor need no StackMap frames.
+  if name not in ('Balance.class','Belfry$Enemy.class'):assert b'StackMap' in data
 assert not z.read('META-INF/MANIFEST.MF').startswith(b'\xef\xbb\xbf')
 assert 'MIDlet-Jar-Size: '+str(j.stat().st_size) in (r/'dist/AshGate.jad').read_text()
 log+='PASS: CLDC class version 45; StackMap preverification; BOM-free manifest; exact JAD size.\n'

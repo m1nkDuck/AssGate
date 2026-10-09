@@ -1,0 +1,737 @@
+{
+  "sources": {
+    "guard.png": "9334136a2e60fff9247b68e8c8c731e3861c0e88ae0d2b1f07ad1f90159b2019",
+    "guard_swords_fixed.png": "2a93429ffe4cb82eb466f0425166ac3a844b5f2b457ed62107112ff981be18a4"
+  },
+  "cell_size": [
+    128,
+    80
+  ],
+  "anchor": [
+    64,
+    68
+  ],
+  "standing_height": 44,
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "columns": [
+    "idle",
+    "walk_left_contact",
+    "walk_left_pass",
+    "walk_right_contact",
+    "walk_right_pass",
+    "windup",
+    "strike",
+    "fallen"
+  ],
+  "frames": [
+    {
+      "row": 0,
+      "column": 0,
+      "source_filename": "guard.png",
+      "source_row": 0,
+      "source_column": 0,
+      "source_box": [
+        32,
+        24,
+        201,
+        212
+      ],
+      "mirror": false,
+      "source_axis": 106,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        39,
+        25,
+        79,
+        69
+      ]
+    },
+    {
+      "row": 0,
+      "column": 1,
+      "source_filename": "guard.png",
+      "source_row": 0,
+      "source_column": 1,
+      "source_box": [
+        251,
+        24,
+        422,
+        212
+      ],
+      "mirror": false,
+      "source_axis": 107,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        39,
+        25,
+        79,
+        69
+      ]
+    },
+    {
+      "row": 0,
+      "column": 2,
+      "source_filename": "guard.png",
+      "source_row": 0,
+      "source_column": 2,
+      "source_box": [
+        470,
+        24,
+        633,
+        212
+      ],
+      "mirror": false,
+      "source_axis": 97,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        41,
+        25,
+        79,
+        69
+      ]
+    },
+    {
+      "row": 0,
+      "column": 3,
+      "source_filename": "guard.png",
+      "source_row": 0,
+      "source_column": 3,
+      "source_box": [
+        683,
+        24,
+        843,
+        212
+      ],
+      "mirror": false,
+      "source_axis": 96,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        42,
+        25,
+        79,
+        69
+      ]
+    },
+    {
+      "row": 0,
+      "column": 4,
+      "source_filename": "guard.png",
+      "source_row": 0,
+      "source_column": 4,
+      "source_box": [
+        892,
+        24,
+        1052,
+        213
+      ],
+      "mirror": false,
+      "source_axis": 96,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        42,
+        25,
+        79,
+        69
+      ]
+    },
+    {
+      "row": 0,
+      "column": 5,
+      "source_filename": "guard.png",
+      "source_row": 0,
+      "source_column": 5,
+      "source_box": [
+        1133,
+        21,
+        1289,
+        213
+      ],
+      "mirror": false,
+      "source_axis": 72,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        47,
+        24,
+        84,
+        69
+      ]
+    },
+    {
+      "row": 0,
+      "column": 6,
+      "source_filename": "guard.png",
+      "source_row": 0,
+      "source_column": 6,
+      "source_box": [
+        1348,
+        34,
+        1540,
+        213
+      ],
+      "mirror": false,
+      "source_axis": 102,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        40,
+        27,
+        85,
+        69
+      ]
+    },
+    {
+      "row": 0,
+      "column": 7,
+      "source_filename": "guard.png",
+      "source_row": 0,
+      "source_column": 7,
+      "source_box": [
+        1552,
+        132,
+        1758,
+        215
+      ],
+      "mirror": false,
+      "source_axis": 103,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        40,
+        50,
+        88,
+        69
+      ]
+    },
+    {
+      "row": 1,
+      "column": 0,
+      "source_filename": "guard.png",
+      "source_row": 1,
+      "source_column": 0,
+      "source_box": [
+        31,
+        242,
+        203,
+        430
+      ],
+      "mirror": false,
+      "source_axis": 87,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        44,
+        25,
+        83,
+        69
+      ]
+    },
+    {
+      "row": 1,
+      "column": 1,
+      "source_filename": "guard.png",
+      "source_row": 1,
+      "source_column": 1,
+      "source_box": [
+        250,
+        242,
+        429,
+        429
+      ],
+      "mirror": false,
+      "source_axis": 89,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        43,
+        25,
+        85,
+        69
+      ]
+    },
+    {
+      "row": 1,
+      "column": 2,
+      "source_filename": "guard_swords_fixed.png",
+      "source_row": 1,
+      "source_column": 2,
+      "source_box": [
+        469,
+        242,
+        632,
+        433
+      ],
+      "mirror": false,
+      "source_axis": 80,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        45,
+        24,
+        83,
+        69
+      ]
+    },
+    {
+      "row": 1,
+      "column": 3,
+      "source_filename": "guard.png",
+      "source_row": 1,
+      "source_column": 3,
+      "source_box": [
+        692,
+        242,
+        857,
+        429
+      ],
+      "mirror": false,
+      "source_axis": 77,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        46,
+        25,
+        85,
+        69
+      ]
+    },
+    {
+      "row": 1,
+      "column": 4,
+      "source_filename": "guard.png",
+      "source_row": 1,
+      "source_column": 4,
+      "source_box": [
+        903,
+        242,
+        1072,
+        429
+      ],
+      "mirror": false,
+      "source_axis": 79,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        46,
+        25,
+        86,
+        69
+      ]
+    },
+    {
+      "row": 1,
+      "column": 5,
+      "source_filename": "guard.png",
+      "source_row": 2,
+      "source_column": 5,
+      "source_box": [
+        1135,
+        447,
+        1299,
+        650
+      ],
+      "mirror": true,
+      "source_axis": 83,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        45,
+        21,
+        83,
+        69
+      ]
+    },
+    {
+      "row": 1,
+      "column": 6,
+      "source_filename": "guard.png",
+      "source_row": 2,
+      "source_column": 6,
+      "source_box": [
+        1350,
+        467,
+        1533,
+        650
+      ],
+      "mirror": true,
+      "source_axis": 81,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        45,
+        26,
+        88,
+        69
+      ]
+    },
+    {
+      "row": 1,
+      "column": 7,
+      "source_filename": "guard.png",
+      "source_row": 1,
+      "source_column": 7,
+      "source_box": [
+        1548,
+        354,
+        1756,
+        436
+      ],
+      "mirror": false,
+      "source_axis": 104,
+      "scale": 0.23404255319148937,
+      "packed_visible_bounds": [
+        40,
+        50,
+        89,
+        69
+      ]
+    },
+    {
+      "row": 2,
+      "column": 0,
+      "source_filename": "guard.png",
+      "source_row": 2,
+      "source_column": 0,
+      "source_box": [
+        62,
+        462,
+        230,
+        649
+      ],
+      "mirror": false,
+      "source_axis": 91,
+      "scale": 0.23529411764705882,
+      "packed_visible_bounds": [
+        43,
+        25,
+        83,
+        69
+      ]
+    },
+    {
+      "row": 2,
+      "column": 1,
+      "source_filename": "guard.png",
+      "source_row": 2,
+      "source_column": 1,
+      "source_box": [
+        272,
+        462,
+        451,
+        649
+      ],
+      "mirror": false,
+      "source_axis": 97,
+      "scale": 0.23529411764705882,
+      "packed_visible_bounds": [
+        42,
+        25,
+        83,
+        69
+      ]
+    },
+    {
+      "row": 2,
+      "column": 2,
+      "source_filename": "guard_swords_fixed.png",
+      "source_row": 2,
+      "source_column": 2,
+      "source_box": [
+        495,
+        461,
+        659,
+        649
+      ],
+      "mirror": false,
+      "source_axis": 88,
+      "scale": 0.23529411764705882,
+      "packed_visible_bounds": [
+        43,
+        25,
+        82,
+        69
+      ]
+    },
+    {
+      "row": 2,
+      "column": 3,
+      "source_filename": "guard.png",
+      "source_row": 2,
+      "source_column": 3,
+      "source_box": [
+        713,
+        462,
+        881,
+        649
+      ],
+      "mirror": false,
+      "source_axis": 89,
+      "scale": 0.23529411764705882,
+      "packed_visible_bounds": [
+        43,
+        25,
+        83,
+        69
+      ]
+    },
+    {
+      "row": 2,
+      "column": 4,
+      "source_filename": "guard.png",
+      "source_row": 2,
+      "source_column": 4,
+      "source_box": [
+        926,
+        461,
+        1097,
+        649
+      ],
+      "mirror": false,
+      "source_axis": 96,
+      "scale": 0.23529411764705882,
+      "packed_visible_bounds": [
+        41,
+        25,
+        81,
+        69
+      ]
+    },
+    {
+      "row": 2,
+      "column": 5,
+      "source_filename": "guard.png",
+      "source_row": 2,
+      "source_column": 5,
+      "source_box": [
+        1135,
+        447,
+        1299,
+        650
+      ],
+      "mirror": false,
+      "source_axis": 80,
+      "scale": 0.23529411764705882,
+      "packed_visible_bounds": [
+        45,
+        21,
+        84,
+        69
+      ]
+    },
+    {
+      "row": 2,
+      "column": 6,
+      "source_filename": "guard.png",
+      "source_row": 2,
+      "source_column": 6,
+      "source_box": [
+        1350,
+        467,
+        1533,
+        650
+      ],
+      "mirror": false,
+      "source_axis": 101,
+      "scale": 0.23529411764705882,
+      "packed_visible_bounds": [
+        40,
+        26,
+        83,
+        69
+      ]
+    },
+    {
+      "row": 2,
+      "column": 7,
+      "source_filename": "guard.png",
+      "source_row": 2,
+      "source_column": 7,
+      "source_box": [
+        1557,
+        578,
+        1761,
+        654
+      ],
+      "mirror": false,
+      "source_axis": 102,
+      "scale": 0.23529411764705882,
+      "packed_visible_bounds": [
+        40,
+        51,
+        88,
+        69
+      ]
+    },
+    {
+      "row": 3,
+      "column": 0,
+      "source_filename": "guard.png",
+      "source_row": 3,
+      "source_column": 0,
+      "source_box": [
+        52,
+        671,
+        237,
+        857
+      ],
+      "mirror": false,
+      "source_axis": 72,
+      "scale": 0.23655913978494625,
+      "packed_visible_bounds": [
+        47,
+        25,
+        91,
+        69
+      ]
+    },
+    {
+      "row": 3,
+      "column": 1,
+      "source_filename": "guard.png",
+      "source_row": 3,
+      "source_column": 1,
+      "source_box": [
+        274,
+        671,
+        444,
+        858
+      ],
+      "mirror": false,
+      "source_axis": 67,
+      "scale": 0.23655913978494625,
+      "packed_visible_bounds": [
+        48,
+        25,
+        88,
+        69
+      ]
+    },
+    {
+      "row": 3,
+      "column": 2,
+      "source_filename": "guard.png",
+      "source_row": 3,
+      "source_column": 2,
+      "source_box": [
+        490,
+        671,
+        658,
+        858
+      ],
+      "mirror": false,
+      "source_axis": 69,
+      "scale": 0.23655913978494625,
+      "packed_visible_bounds": [
+        48,
+        25,
+        88,
+        69
+      ]
+    },
+    {
+      "row": 3,
+      "column": 3,
+      "source_filename": "guard.png",
+      "source_row": 3,
+      "source_column": 3,
+      "source_box": [
+        706,
+        671,
+        875,
+        860
+      ],
+      "mirror": false,
+      "source_axis": 71,
+      "scale": 0.23655913978494625,
+      "packed_visible_bounds": [
+        47,
+        24,
+        87,
+        69
+      ]
+    },
+    {
+      "row": 3,
+      "column": 4,
+      "source_filename": "guard.png",
+      "source_row": 3,
+      "source_column": 4,
+      "source_box": [
+        915,
+        671,
+        1097,
+        860
+      ],
+      "mirror": false,
+      "source_axis": 74,
+      "scale": 0.23655913978494625,
+      "packed_visible_bounds": [
+        46,
+        24,
+        89,
+        69
+      ]
+    },
+    {
+      "row": 3,
+      "column": 5,
+      "source_filename": "guard.png",
+      "source_row": 3,
+      "source_column": 5,
+      "source_box": [
+        1134,
+        674,
+        1304,
+        862
+      ],
+      "mirror": false,
+      "source_axis": 74,
+      "scale": 0.23655913978494625,
+      "packed_visible_bounds": [
+        46,
+        25,
+        86,
+        69
+      ]
+    },
+    {
+      "row": 3,
+      "column": 6,
+      "source_filename": "guard.png",
+      "source_row": 3,
+      "source_column": 6,
+      "source_box": [
+        1360,
+        673,
+        1534,
+        862
+      ],
+      "mirror": false,
+      "source_axis": 68,
+      "scale": 0.23655913978494625,
+      "packed_visible_bounds": [
+        48,
+        24,
+        89,
+        69
+      ]
+    },
+    {
+      "row": 3,
+      "column": 7,
+      "source_filename": "guard.png",
+      "source_row": 3,
+      "source_column": 7,
+      "source_box": [
+        1549,
+        788,
+        1754,
+        860
+      ],
+      "mirror": false,
+      "source_axis": 102,
+      "scale": 0.23655913978494625,
+      "packed_visible_bounds": [
+        40,
+        52,
+        88,
+        69
+      ]
+    }
+  ]
+}

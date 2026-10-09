@@ -1,10 +1,15 @@
 import javax.microedition.lcdui.*;
 /** Cached pixel scenery and supplied sprite atlas, using only MIDP 2.0 drawing. */
 public final class Art {
-    private Image floor, warned;
+    private Image floor, warned, campFloor;
     private final HeroSprites heroSprites=new HeroSprites();
     private final BossSprites bossSprites=new BossSprites();
     private int cached=-1;
+    private Image belfryFloor,belfryWarned;
+    private Belfry belfryHazardOwner;
+    private int belfryFloorKey=-1,belfryHazardKey=-1,bellHazardKey=-1,belfryHazardRoom=-1;
+    private final int[] chapterActors=new int[5];
+    private final float[] chapterDepth=new float[5];
     private static final String LETTERS="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-:/!.+? ";
     private static final String[] GLYPHS={"010101111101101","110101110101110","011100100100011","110101101101110","111100110100111","111100110100100","011100101101011","101101111101101","111010010010111","001001001101010","101101110101101","100100100100111","101111111101101","101111111111101","010101101101010","110101110100100","010101101111011","110101110101101","011100010001110","111010010010010","101101101101111","101101101101010","101101111111101","101101010101101","101101010010010","111001010100111","111101101101111","010110010010111","110001010100111","110001010001110","101101111001001","111100110001110","011100111101111","111001010010010","111101111101111","111101111001110","000000111000000","000010000010000","001001010100100","010010010000010","000000000000010","000010111010000","110001010000010","000000000000000"};
     public static void text(Graphics g,String s,int x,int y,int color,int scale){
@@ -26,6 +31,8 @@ public final class Art {
     public void draw(Graphics g,World w,boolean paused){
         if(w.mode==World.TITLE){mainMenu(g,w);return;}
         if(w.mode==World.STORY){story(g,w);if(paused){panel(g,42,88,236,67);center(g,"PAUSED",99,0xe5c992,2);center(g,"P - CONTINUE",128,0xd2c4b0,1);}return;}
+        if(w.mode==World.CAMP){camp(g,w);if(paused)pausePanel(g);return;}
+        if(w.mode==World.BELFRY||w.mode==World.BELFRY_LOSE||w.mode==World.DAWN){belfry(g,w);if(paused)pausePanel(g);return;}
         boolean hazard=w.mode==World.FIGHT&&(w.bstate==World.WARNING||w.bstate==World.ACTIVE);
         g.drawImage(floor,0,0,Graphics.TOP|Graphics.LEFT);ArenaArt.ambient(g,w.clock);
         if(w.mode==World.INTRO){rect(g,0x27322c,145,215,30,25);center(g,"THE GATE CLOSES BEHIND YOU",28,0xccb892,1);}
@@ -43,11 +50,115 @@ public final class Art {
         }
         if(w.phaseBanner>0&&w.mode==World.FIGHT&&!hazard)center(g,"II - THE OATH IS BROKEN",28,0xf4bc79,1);
         if(w.mode==World.WIN||w.mode==World.LOSE){
-            if(w.deathTime>Balance.DEATH_TIME){panel(g,42,75,236,109);center(g,w.mode==World.WIN?"OATH BROKEN":"YOU FELL",87,w.mode==World.WIN?0xe5c992:0xd88683,2);
-            center(g,w.mode==World.WIN?"THE PATH TO THE HEART OF DAWN IS OPEN.":"WATCH. WAIT. TRY AGAIN.",110,0xb4a7a5,1);
-            center(g,"HITS LANDED: "+w.hitsLanded,130,0xc7bca3,1);center(g,"CENTER / J - PLAY AGAIN",151,0xf5ca86,1);center(g,"Q - TITLE",169,0xa39ba5,1);}
+            if(w.mode==World.WIN&&w.deathTime<Balance.VICTORY_WAIT)center(g,"THE OATHKEEPER HAS FALLEN",28,0xe5c992,1);
+            else if(w.collapseTime()<Balance.DEATH_TIME)center(g,w.mode==World.WIN?"YOUR STRENGTH LEAVES YOU":"YOU FELL",28,0xd8a397,1);
+            fade(g,w.fadeOutTime(),Balance.FADE_OUT_TIME);
         }
-        if(paused){panel(g,42,88,236,67);center(g,"PAUSED",99,0xe5c992,2);center(g,"P / SOFTKEY - CONTINUE",128,0xd2c4b0,1);center(g,"Q - TITLE",142,0xa39ba5,1);}
+        if(paused)pausePanel(g);
+    }
+    private void pausePanel(Graphics g){panel(g,42,88,236,67);center(g,"PAUSED",99,0xe5c992,2);center(g,"P / SOFTKEY - CONTINUE",128,0xd2c4b0,1);center(g,"Q - TITLE",142,0xa39ba5,1);}
+    /** Opaque ordered dithering avoids requiring device-specific alpha blending. */
+    private void fade(Graphics g,int amount,int duration){
+        if(amount<=0)return;
+        if(amount>=duration){rect(g,0x000000,0,0,320,240);return;}
+        int level=Math.max(1,amount*16/duration);int[] bayer={0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5};
+        g.setColor(0x000000);
+        for(int y=0;y<240;y+=4)for(int x=0;x<320;x+=4)if(bayer[(y/4%4)*4+x/4%4]<level)g.fillRect(x,y,4,4);
+    }
+    public void camp(Graphics g,World w){
+        if(campFloor==null)campFloor=BonfireArt.create();
+        g.drawImage(campFloor,0,0,Graphics.TOP|Graphics.LEFT);BonfireArt.ambient(g,w.clock);
+        BelfryArt.campExit(g,w.oathkeeperComplete);
+        if(w.py<151){hero(g,w);BonfireArt.fire(g,w.clock);}else{BonfireArt.fire(g,w.clock);hero(g,w);}
+        rect(g,0x0a111c,0,0,320,18);text(g,"EMBER REFUGE",10,6,0xe8c891,1);text(g,"HP "+w.hp+" / FLASK "+w.potions,126,6,0xc7c6bd,1);text(g,"SAFE",222,6,0xa8c5b0,1);text(g,"P:PAUSE",277,6,0x8b939c,1);
+        rect(g,0x0a111c,0,212,320,28);
+        boolean waking=w.campTime<Balance.CAMP_WAKE_TIME;
+        if(waking){center(g,"YOU WAKE BESIDE THE LAST EMBER",220,0xddc4a8,1);}
+        else{
+            String prompt=w.restState==World.REST_RISE?"STANDING UP":w.restState==World.REST_SIT?"SETTLING BESIDE THE FLAME":w.restState==World.REST_IDLE?"J / CENTER OR MOVE - STAND UP":w.oathkeeperComplete&&World.length(w.px-54,w.py-87)<=28?"J / CENTER - THE ASHEN BELFRY":World.length(w.px-274,w.py-87)<=28?"THE WAY BEHIND YOU IS SEALED":World.length(w.px-148,w.py-151)<=45?"J / CENTER - REST AT THE BONFIRE":"APPROACH THE FIRE OR THE LEFT EXIT";
+            center(g,prompt,218,0xddc4a8,1);center(g,w.restState!=World.REST_NONE?"RESTING AT THE BONFIRE   Q - TITLE":"D-PAD / WASD - MOVE   Q - TITLE",230,0x9da9b3,1);
+        }
+        if(!waking)center(g,w.campNotice>0?"HEALTH AND FLASKS REKINDLED":w.oathkeeperComplete?"THE BELLS CALL. YOUR JOURNEY CONTINUES.":"THE FLAME CALLS YOU BACK",25,w.campNotice>0?0xf4ce8b:0xa3b6bf,1);
+        fade(g,Math.max(0,Balance.FADE_IN_TIME-w.campTime),Balance.FADE_IN_TIME);
+    }
+    private void belfryTelegraph(Belfry b){
+        if(belfryWarned!=null&&belfryHazardOwner==b&&belfryHazardRoom==b.room&&belfryHazardKey==b.hazardVersion&&bellHazardKey==b.boss.hazardVersion)return;
+        belfryHazardOwner=b;belfryHazardRoom=b.room;belfryHazardKey=b.hazardVersion;bellHazardKey=b.boss.hazardVersion;
+        int[] pixels=new int[320*240];
+        for(int y=49;y<217;y++)for(int x=16;x<304;x++)if(b.hazardAt(x,y)){
+            boolean edge=!b.hazardAt(x-1,y)||!b.hazardAt(x+1,y)||!b.hazardAt(x,y-1)||!b.hazardAt(x,y+1);
+            if(edge||(x+y)%4==0)pixels[y*320+x]=edge?0xffffd78c:0xff963e3b;
+        }
+        belfryWarned=Image.createRGBImage(pixels,320,240,true);
+    }
+    public void belfry(Graphics g,World w){
+        Belfry b=w.belfry;boolean ceilingBell=!b.boss.fallenBell&&b.boss.state!=World.TRANSITION;
+        int key=b.room*8+b.fireMask+(b.room==4&&!ceilingBell?40:0);
+        if(belfryFloor==null||key!=belfryFloorKey){belfryFloor=BelfryArt.create(b.room,b.fireMask,ceilingBell);belfryFloorKey=key;}
+        g.drawImage(belfryFloor,0,0,Graphics.TOP|Graphics.LEFT);BelfryArt.ambient(g,b,w.clock);
+        if(b.room==3)bridge(g,b.guardianDefeated&&b.fireMask==7);
+        belfryTelegraph(b);g.drawImage(belfryWarned,0,0,Graphics.TOP|Graphics.LEFT);
+        // Draw the bell between actors by their planted feet, preserving both courtyard paths.
+        int count=0;
+        for(int i=0;i<b.enemies.length;i++)if(b.enemies[i].active&&b.enemies[i].hp>0||b.enemies[i].hp==0&&b.enemies[i].deathTime<Belfry.ENEMY_CORPSE_TIME){chapterActors[count]=i;chapterDepth[count++]=b.enemies[i].y;}
+        chapterActors[count]=2;chapterDepth[count++]=w.py;
+        if(b.room==4){chapterActors[count]=3;chapterDepth[count++]=b.boss.y;}
+        if(b.room==2||b.room==4&&(b.boss.fallenBell||b.boss.state==World.TRANSITION)){chapterActors[count]=4;chapterDepth[count++]=b.room==2?142:138;}
+        for(int i=1;i<count;i++)for(int j=i;j>0&&chapterDepth[j]<chapterDepth[j-1];j--){int a=chapterActors[j];chapterActors[j]=chapterActors[j-1];chapterActors[j-1]=a;float d=chapterDepth[j];chapterDepth[j]=chapterDepth[j-1];chapterDepth[j-1]=d;}
+        for(int i=0;i<count;i++){
+            int a=chapterActors[i];if(a<2)BelfryArt.guard(g,b.enemies[a],w.clock);else if(a==2)hero(g,w);else if(a==3)BellboundArt.draw(g,b.boss,w.clock,w.mode==World.DAWN?w.deathTime:0);else if(b.room==2)BelfryArt.courtBell(g);else BellboundArt.fallenBell(g,b.boss);
+        }
+        chapterHud(g,w);
+        if(b.room==0&&b.entranceQuoteTime>0&&w.mode==World.BELFRY&&b.wakeTime>=Balance.CAMP_WAKE_TIME){
+            panel(g,43,171,234,36);
+            center(g,"THE BELLS STILL TOLL.",182,0xe9ce9d,1);
+            center(g,"BUT THIS PLACE HAS NEVER KNOWN DAWN.",195,0xc4c0bd,1);
+        }else if(b.noticeTime>0&&w.mode==World.BELFRY)chapterNotice(g,b);
+        if(w.mode==World.BELFRY_LOSE)fade(g,w.fadeOutTime(),Balance.FADE_OUT_TIME);
+        else if(w.mode==World.BELFRY&&b.wakeTime<Balance.CAMP_WAKE_TIME)fade(g,Math.max(0,Balance.FADE_IN_TIME-b.wakeTime),Balance.FADE_IN_TIME);
+        if(w.mode==World.DAWN){
+            panel(g,30,76,260,118);center(g,"THE BELLS FALL SILENT",90,0xe6c890,2);
+            center(g,"FIRST DAWN SHARD",113,0xf5dba4,1);
+            center(g,"THE RED LIGHT MOVES.",133,0xd6a291,1);
+            center(g,"SOMETHING IN HEART OF DAWN BREATHES.",147,0xb7afba,1);
+            if(w.deathTime>=3000)center(g,"J / CENTER - RETURN TO THE REFUGE",174,0xddd0b6,1);
+        }
+    }
+    private void bridge(Graphics g,boolean open){
+        if(open){for(int i=0;i<4;i++){rect(g,0x6b6261,274+i*7,133,6,24);rect(g,0xa0927b,275+i*7,133,5,1);}g.setColor(0x969085);g.drawLine(273,130,303,130);g.drawLine(273,160,303,160);}
+        else{rect(g,0x0a1220,277,127,26,36);for(int i=0;i<4;i++)BelfryArt.chain(g,280+i*6,125,280+i*6,163,0x867363);}
+    }
+    private void chapterHud(Graphics g,World w){
+        Belfry b=w.belfry;rect(g,0x0b111b,0,0,320,26);
+        text(g,"KNIGHT",7,4,0xd8d8d2,1);rect(g,0x4e2d36,7,14,76,6);rect(g,0xc95f60,7,14,w.hp*76/Balance.PLAYER_HP,6);
+        text(g,"FLASK "+w.potions,98,4,0xddba73,1);text(g,"ROLL",155,4,0x9ac9c9,1);
+        rect(g,0x293b45,155,14,40,4);rect(g,0x7fdad0,155,14,40*(Balance.ROLL_COOLDOWN-w.dodgeCd)/Balance.ROLL_COOLDOWN,4);
+        for(int i=0;i<3;i++){rect(g,(b.fireMask&(1<<i))!=0?0xe7ad5e:0x49414a,211+i*9,13,5,7);}
+        text(g,"P:PAUSE",276,4,0x938e9b,1);text(g,(b.room+1)+" / 5",276,15,0xc5b4a5,1);
+        rect(g,0x0b111b,0,216,320,24);
+        if(b.room==4){
+            text(g,b.boss.phase==2?"II THE BELLBOUND":"THE BELLBOUND",10,220,0xd3b9a2,1);
+            rect(g,0x452d38,10,232,300,4);rect(g,0xc07566,10,232,300*b.boss.hp/Bellbound.MAX_HP,4);
+            if(b.boss.state==World.WARNING||b.boss.state==World.ACTIVE){String[] moves={"CHAIN SWEEP","BELL CRUSH","FUNERAL TOLL"};center(g,moves[b.boss.attack],29,0xffd78c,1);}
+            else if(b.boss.state==World.RECOVER&&!b.boss.dead)center(g,"OPEN - THE MACE IS STUCK",29,0xc5d4b3,1);
+            else if(b.boss.state==World.TRANSITION)center(g,"THE BELL IS FALLING",29,0xf1bd8a,1);
+        }else{
+            String[] names={"ASHEN STEPS","UNLIT CORRIDOR","FALLEN BELL COURT","CHAIN CHAMBER"};
+            text(g,names[b.room],10,220,0xc3bbaf,1);
+            String prompt=b.wakeTime<Balance.CAMP_WAKE_TIME?"YOU WAKE BESIDE THE EMBER":b.fireIndex()>=0&&World.length(w.px-b.torchX(),w.py-b.torchY())<30?"J - LIGHT / READ THE BRAZIER":b.room==2&&!b.flaskTaken&&World.length(w.px-72,w.py-185)<26?"J - TAKE THE FLASK":b.room==2&&World.length(w.px-60,w.py-110)<27?"J - READ THE INSCRIPTION":b.room==3&&b.guardianDefeated&&World.length(w.px-242,w.py-177)<33?"J - REST / SET CHECKPOINT":World.length(w.px-291,w.py-145)<30?b.exitReady()?"J - CONTINUE THE JOURNEY":"THE WAY IS SEALED":World.length(w.px-29,w.py-145)<28?"J - RETURN":"J - INTERACT / SLASH   L - HEAL";
+            center(g,prompt,231,0xddc49f,1);
+        }
+    }
+    private void chapterNotice(Graphics g,Belfry b){
+        String a="",z="";
+        if(b.notice==1){a=b.room==1?"THE SCRATCHES ALL POINT TO THE EXIT.":b.room==2?"THE KEEPERS CHAINED THEMSELVES TO THE BELLS.":"THEY WAITED FOR A DAWN THAT NEVER CAME.";z="THE FIRE REVEALS AND SLOWS THE HIDDEN ARMOUR.";}
+        else if(b.notice==2){a="ONE FLASK RECOVERED FROM THE ASH.";z="THE LONGER PATH REMEMBERS THE LIVING.";}
+        else if(b.notice==3){a="WE CHAINED OURSELVES TO CALL THE DAWN.";z="NO ONE REMAINED TO RELEASE US.";}
+        else if(b.notice==4){a="THREE FIRES BURN. THE STONE BRIDGE OPENS.";z="REST AT THE EMBER BEFORE THE FINAL CLIMB.";}
+        else if(b.notice==5){a="CHECKPOINT KINDLED. HEALTH AND FLASKS RESTORED.";z="THE BELLS ARE LOUDEST ABOVE YOU.";}
+        else if(b.notice==6){a="THE WAY REMAINS SEALED.";z="LIGHT THE BRAZIERS. DEFEAT THE KEEPERS.";}
+        else if(b.notice==7){a="THE FIRST DAWN SHARD IS YOURS.";z="HEART OF DAWN IS ALIVE.";}
+        if(a.length()>0){panel(g,12,28,296,34);center(g,a,36,0xe7c695,1);center(g,z,49,0xaeaab7,1);}
     }
     private final World actors=new World();
     private void landscape(Graphics g,int tick){
@@ -85,7 +196,7 @@ public final class Art {
         rect(g,0x3a3038,22,103,17,115);rect(g,0x655251,25,104,3,114);rect(g,0x373039,282,103,17,115);rect(g,0x655251,285,104,3,114);
         flame(g,31,108,w.clock);flame(g,291,108,w.clock);
         center(g,"ASHGATE",31,0xebcf9e,4);center(g,"THE BLACK OATH",62,0xb8a9a9,1);
-        center(g,"CHAPTER I - THE LAST EMBER",80,0x8d8597,1);
+        center(g,"THE LAST EMBER / THE ASHEN BELFRY",80,0x8d8597,1);
         panel(g,66,100,188,101);
         String[] items={"BEGIN JOURNEY","CONTROLS",w.soundOn?"SOUND: ON":"SOUND: OFF","EXIT"};
         for(int i=0;i<4;i++){int y=114+i*22;if(w.menuIndex==i){rect(g,0x382d34,76,y-5,168,17);g.setColor(0xeac888);g.fillTriangle(82,y-1,86,y+2,82,y+5);g.drawLine(91,y+9,232,y+9);}center(g,items[i],y,w.menuIndex==i?0xffdba0:0x9d95a6,1);}
@@ -129,7 +240,7 @@ public final class Art {
 
     public void controls(Graphics g){
         rect(g,0x11151e,0,0,320,240);center(g,"HOW TO SURVIVE",17,0xe8cb92,2);
-        String[] rows={"MOVE: D-PAD OR W A S D","DIAGONALS: TWO KEYS / 1 3 7 9","SLASH: CENTER / J / 5","ROLL: DOUBLE-TAP A MOVE KEY","HEAL: L / 2 - 3 FLASKS","PAUSE: P / LEFT SOFTKEY","SOUND: M    EXIT: Q ON TITLE","","AMBER MARKS THE WHOLE DANGER ZONE.","TAP TWICE FAST. HOLD ONLY MOVES.","HEAL TAKES 1 SECOND. HITS CANCEL.","CYAN ROLL GLOW MEANS INVINCIBLE.","STRIKE AFTER THE BOSS COMMITS.","PHASE II STARTS BELOW HALF HEALTH."};
+        String[] rows={"MOVE: D-PAD OR W A S D","DIAGONALS: TWO KEYS / 1 3 7 9","SLASH: CENTER / J / 5","ROLL: DOUBLE-TAP A MOVE KEY","HEAL: L / 2 - 3 FLASKS","PAUSE: P / LEFT SOFTKEY","SOUND: M    EXIT: Q ON TITLE","","THE OATHKEEPER IS NEARLY UNBEATABLE.","AMBER MARKS THE WHOLE DANGER ZONE.","CYAN ROLL GLOW MEANS INVINCIBLE.","WIN OR FALL - WAKE AT THE BONFIRE.","J: REST / LIGHT / READ / USE ARCH.","THREE BRAZIERS OPEN THE BELFRY BRIDGE."};
         for(int i=0;i<rows.length;i++)text(g,rows[i],19,46+i*11, i<7?0xc9c9cc:0xb5a68d,1);
         center(g,"CENTER / J - BACK",218,0xffd790,1);
     }
@@ -147,7 +258,7 @@ public final class Art {
     static int facing(float dx,float dy){return Math.abs(dx)>=Math.abs(dy)?(dx<0?2:3):(dy<0?0:1);}
     void hero(Graphics g,World w){
         int x=(int)w.px,y=(int)w.py;g.setColor(0x13161c);g.fillArc(x-10,y-3,20,7,0,360);
-        if(w.mode==World.LOSE){heroSprites.draw(g,w,facing(w.fx,w.fy));return;}
+        if(HeroSprites.unconscious(w)){heroSprites.draw(g,w,facing(w.fx,w.fy));return;}
         if(w.inv>0&&(w.clock/65)%2==0)return;
         int spriteDir=w.pstate==World.ROLL?facing(w.rollX,w.rollY):facing(w.fx,w.fy);
         heroSprites.draw(g,w,spriteDir);

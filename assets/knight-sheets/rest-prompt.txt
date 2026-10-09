@@ -1,0 +1,18 @@
+Use case: stylized-concept.
+Asset type: NEW transparent hero resting sprite sheet for an existing Java ME pixel action game.
+Input image 1 is a STYLE AND CHARACTER IDENTITY REFERENCE ONLY: the project's existing idle sheet. Create a NEW resting animation, do not reproduce the idle sheet.
+Subject: exactly the same fully helmeted short human knight, violet-indigo steel plate armor, rounded shoulder plates, narrow visor with vertical black slits, orange-bronze sword hilt and straight pale silver-lavender blade. Preserve the reference's palette, armor design, silhouette, proportions and dark outlines. No skeleton, exposed face, cape or costume change.
+Composition: a clean 1536x1024 sprite sheet, EXACTLY 6 columns by 4 rows, 24 separate complete full-body poses, evenly centered in invisible 256x256 cells. Same ground baseline in every cell, around cell y=225. Empty transparent gutters, no cells touching. Reference standing knight height about 202 source pixels; resting seated height about 115-125 pixels. Never scale the person smaller as they sit; bend knees and lower torso.
+Rows top to bottom: facing DOWN (front view), facing LEFT (profile facing left), facing RIGHT (profile facing right), facing UP (back view).
+Each row is the SAME six-phase animation, left to right:
+1 upright standing and relaxed with blade pointing down beside body, both boots grounded;
+2 beginning to sit, both knees gently flexed and torso lowering about 20%;
+3 deep controlled crouch, hips lowering about 40%, free hand supports knee;
+4 hips almost on the ground, both knees bent, boots stay ahead of body; sword is being rested alongside the outer leg;
+5 settling into a clearly SEATED resting pose on the ground, hips grounded, knees bent in front, free hand relaxed on the raised knee, blade safely resting diagonally beside body;
+6 fully SEATED on the ground, same legs as frame5, shoulders relaxed, torso upright with slight bowed helmet, calm gentle breathing. Frame6 is seated, never standing or lying unconscious.
+The side profiles must visibly show a seated pelvis on the floor, bent thighs and shins, boots resting ahead of the hips. Front/back views show two bent knees separated, seated hips between. No stools/chairs.
+Style: crisp illustrated pixel-game sprite consistent with reference, controlled metallic highlights and dark saturated purple shadows. All poses retain the same body mass and continuous right-hand sword; complete blade with bronze guard in every frame, no blade floating or clipped.
+Background: genuinely transparent alpha only. No bonfire, scenery, text, numbers, labels, gridlines, shadows cast outside the character, checkerboard or glow around the whole sprite. Keep entire helmet, boots and sword in each cell. Smooth chronological sit-down poses that can play in reverse to stand back up.
+
+Generation: built-in image_gen; idle sheet supplied as character and palette reference.

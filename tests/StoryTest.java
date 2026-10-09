@@ -18,7 +18,12 @@ public class StoryTest {
         press(g,'q');check(g.world.mode==World.TITLE,"Cancel cinematic returns to main menu");press(g,'j');check(g.world.storyTime==0,"New journey restarts story from first scene");
         g.world.storyTime=4490;g.tick();check(g.world.storyTime/4500==1,"First scene advances to second");g.world.storyTime=8990;g.tick();check(g.world.storyTime/4500==2,"Second scene advances to third");
         g.world.storyTime=13490;g.tick();check(g.world.mode==World.INTRO&&g.world.storyTime==0,"Full cinematic auto-completes into doorway");
-        g.world.mode=World.LOSE;g.world.deathTime=1000;g.world.hp=0;g.world.potions=0;press(g,'j');check(g.world.mode==World.INTRO&&g.world.hp==100&&g.world.potions==3,"Retry resets fight and avoids repeating cinematic");
+        g.world.mode=World.LOSE;g.world.deathTime=Balance.DEATH_TIME+100;g.world.hp=0;g.world.potions=0;
+        press(g,'j');check(g.world.mode==World.LOSE&&g.world.hp==0&&g.world.potions==0,"J cannot skip defeat collapse or restart the arena");
+        g.world.mode=World.WIN;g.world.deathTime=1000;g.world.bossHp=0;
+        press(g,'j');check(g.world.mode==World.WIN&&g.world.bossHp==0,"J cannot skip the victory waiting period");
+        g.world.deathTime=Balance.VICTORY_WAIT+Balance.DEATH_TIME+100;press(g,'j');
+        check(g.world.mode==World.WIN,"J cannot skip the victory fade to the bonfire");
         System.out.println("ALL "+checks+" STORY/MENU CHECKS PASSED");System.exit(0);
     }
 }

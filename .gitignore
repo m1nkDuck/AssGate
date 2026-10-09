@@ -1,6 +1,7 @@
 # Local build and asset-generation intermediates
 /build/
 /output/
+*.class
 
 # Python caches
 __pycache__/

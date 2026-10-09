@@ -1,8 +1,20 @@
-...
+....
 ----------------------------------------------------------------------
-Ran 3 tests in 0.002s
+Ran 4 tests in 1.294s
 
 OK
+----------
+1. WARNING in C:\Users\Admin\Downloads\AshGate\tests\BonfireTest.java (at line 34)
+	check(Balance.REST_SIT_TIME==720&&Balance.REST_RISE_TIME==720,"Sitting and rising each use 720 milliseconds");
+	      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+Comparing identical expressions
+----------
+2. WARNING in C:\Users\Admin\Downloads\AshGate\tests\BonfireTest.java (at line 34)
+	check(Balance.REST_SIT_TIME==720&&Balance.REST_RISE_TIME==720,"Sitting and rising each use 720 milliseconds");
+	                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Comparing identical expressions
+----------
+2 problems (2 warnings)
 PASS: Sword windup does no damage
 PASS: Sword active hits once
 PASS: No repeat from the same attack
@@ -28,33 +40,56 @@ PASS: Attack 0 warning does not hurt
 PASS: Attack 0 active hits marked area
 PASS: Attack 0 cannot hit twice
 PASS: Attack 0 has recovery opening
+PASS: Attack 0 keeps its entire recovery window
+PASS: Attack 0 ends recovery at its configured boundary
 PASS: Attack 1 direction stays locked
 PASS: Attack 1 warning does not hurt
 PASS: Attack 1 active hits marked area
 PASS: Attack 1 cannot hit twice
 PASS: Attack 1 has recovery opening
+PASS: Attack 1 keeps its entire recovery window
+PASS: Attack 1 ends recovery at its configured boundary
 PASS: Attack 2 direction stays locked
 PASS: Attack 2 warning does not hurt
 PASS: Attack 2 active hits marked area
 PASS: Attack 2 cannot hit twice
 PASS: Attack 2 has recovery opening
+PASS: Attack 2 keeps its entire recovery window
+PASS: Attack 2 ends recovery at its configured boundary
 PASS: Attack 3 direction stays locked
 PASS: Attack 3 warning does not hurt
 PASS: Attack 3 active hits marked area
 PASS: Attack 3 cannot hit twice
 PASS: Attack 3 has recovery opening
+PASS: Attack 3 keeps its entire recovery window
+PASS: Attack 3 ends recovery at its configured boundary
 PASS: Slam outside body footprint is safe
 PASS: Slam edge includes body radius
 PASS: Phase two starts below half HP
-PASS: Phase two retains readable warnings
+PASS: Phase two retains a warning and accelerates its timing
 PASS: Exactly half HP does not start phase two
+PASS: Harder boss attack 0 deals more damage than before
+PASS: Harder boss attack 0 warns and recovers faster than before
+PASS: Harder boss attack 1 deals more damage than before
+PASS: Harder boss attack 1 warns and recovers faster than before
+PASS: Harder boss attack 2 deals more damage than before
+PASS: Harder boss attack 2 warns and recovers faster than before
+PASS: Harder boss attack 3 deals more damage than before
+PASS: Harder boss attack 3 warns and recovers faster than before
+PASS: Sweep covers ground beyond the previous 53-pixel radius
+PASS: Sweep still has an exact outer edge
+PASS: Slam is longer and wider than before
+PASS: Slam still ends at its configured length
+PASS: Dash is longer and wider than before
+PASS: Quake covers ground beyond the previous 61-pixel radius
+PASS: Quake still has an exact outer edge
 PASS: Attack sequence avoids excessive repeats
 PASS: Arena boundary clamps player
 PASS: Zero HP triggers defeat
 PASS: Retry completely resets combat
 PASS: Retry clears previous cinematic time
 PASS: Final sword hit triggers victory
-ALL 51 CHECKS PASSED
+ALL 74 CHECKS PASSED
 PASS: Title enters arena through intro
 PASS: Holding and auto-repeat cause only ONE slash
 PASS: Release then press permits next slash
@@ -77,9 +112,414 @@ PASS: New journey restarts story from first scene
 PASS: First scene advances to second
 PASS: Second scene advances to third
 PASS: Full cinematic auto-completes into doorway
-PASS: Retry resets fight and avoids repeating cinematic
-ALL 15 STORY/MENU CHECKS PASSED
-Rendered 13 real MIDP frames successfully.
+PASS: J cannot skip defeat collapse or restart the arena
+PASS: J cannot skip the victory waiting period
+PASS: J cannot skip the victory fade to the bonfire
+ALL 17 STORY/MENU CHECKS PASSED
+PASS: Bonfire sequence uses the requested waiting, death, fade and waking durations
+PASS: Final sword hit starts victory at time zero and clears hurt flashing
+PASS: Victory wait freezes boss, movement, damage, healing and attacks
+PASS: Victory does not collapse before five seconds
+PASS: Five-second boundary starts the collapse clock without skipping a frame
+PASS: Victory collapse begins immediately after the waiting period
+PASS: Defeat death animation freezes the completed battle
+PASS: Defeat plays the complete death animation before fading
+PASS: Defeat fade keeps combat frozen
+PASS: Defeat remains in the arena until the fade completes
+PASS: Defeat reaches opaque black at the exact fade boundary
+PASS: Defeat holds black before entering the camp
+PASS: Defeat automatically enters the bonfire at the exact final boundary
+PASS: Defeat outcome survives arrival with full health and flasks
+PASS: Defeat completes the one-time opening without rewriting its outcome
+PASS: Defeat arrival restores the fixed waking position and clears combat locks
+PASS: Defeat waking locks controls and keeps boss simulation frozen
+PASS: Defeat waking reaches the control-unlock boundary
+PASS: Defeat permits movement after waking and retains its outcome
+PASS: Victory death animation freezes the completed battle
+PASS: Victory plays the complete death animation before fading
+PASS: Victory fade keeps combat frozen
+PASS: Victory remains in the arena until the fade completes
+PASS: Victory reaches opaque black at the exact fade boundary
+PASS: Victory holds black before entering the camp
+PASS: Victory automatically enters the bonfire at the exact final boundary
+PASS: Victory outcome survives arrival with full health and flasks
+PASS: Victory completes the one-time opening without rewriting its outcome
+PASS: Victory arrival restores the fixed waking position and clears combat locks
+PASS: Victory waking locks controls and keeps boss simulation frozen
+PASS: Victory waking reaches the control-unlock boundary
+PASS: Victory permits movement after waking and retains its outcome
+PASS: J outside the fire interaction radius does not rest
+PASS: J at the 45-pixel fire edge rests without restarting or losing the outcome
+PASS: Healing and dodge controls do not start combat actions at the camp
+PASS: Camp movement clamps to the upper-left walk boundary
+PASS: Camp movement clamps to the lower-right walk boundary
+PASS: Camp exploration never advances the boss or damages the hero
+PASS: J outside the gate interaction radius cannot start a battle
+PASS: J at the old gate edge cannot replay the opening or reset camp resources
+PASS: Hero stays upright throughout the full victory waiting period
+PASS: Victory starts with the first collapse frame at five seconds
+PASS: Defeat starts with the first collapse frame immediately
+PASS: Defeat collapse preserves frame 0 order
+PASS: Defeat collapse preserves frame 1 order
+PASS: Defeat collapse preserves frame 2 order
+PASS: Defeat collapse preserves frame 3 order
+PASS: Defeat collapse preserves frame 4 order
+PASS: Defeat collapse preserves frame 5 order
+PASS: Camp fade-in holds the hero fully fallen
+PASS: Camp waking reverses collapse frame 0
+PASS: Camp waking reverses collapse frame 1
+PASS: Camp waking reverses collapse frame 2
+PASS: Camp waking reverses collapse frame 3
+PASS: Camp waking reverses collapse frame 4
+PASS: Camp waking reverses collapse frame 5
+PASS: Camp switches to the living animation when controls unlock
+PASS: Pause freezes the defeat fade timer
+PASS: Unpause advances the end-state timer by one fixed step
+PASS: Pause freezes bonfire fade-in and waking timers
+PASS: Unpause resumes the camp sequence without skipping time
+PASS: Pause freezes the victory fade timer
+PASS: Unpause advances the end-state timer by one fixed step
+PASS: Pause freezes bonfire fade-in and waking timers
+PASS: Unpause resumes the camp sequence without skipping time
+PASS: Held inputs cannot interrupt automatic bonfire arrival
+PASS: Held movement and action inputs from defeat do not carry into the awake camp
+PASS: A fresh movement press works after automatic camp arrival
+PASS: Real Canvas J input rests at the fire
+PASS: Canvas gate interaction waits until the resting hero has stood up
+PASS: Real Canvas J cannot reopen the old boss gate
+PASS: Real Canvas J at the left exit continues into the next chapter after defeat
+PASS: Sitting and rising each use 720 milliseconds
+PASS: Rest begins at frame zero before simultaneous movement at an outer seat
+PASS: Rest turns the hero toward the fire instead of the movement input
+PASS: Rest restores health and flasks immediately without combat actions
+PASS: Sitting retains the last in-progress millisecond
+PASS: Sitting keeps the foot anchor and fire-facing direction locked
+PASS: Sitting reaches seated idle at the exact 720-millisecond boundary
+PASS: Seated breathing advances its own clock while healing and dodge are ignored
+PASS: Seated idle never slides or changes facing
+PASS: A fresh seated J starts rising without repeating the fire reward
+PASS: Rising ignores further action inputs until the final millisecond
+PASS: Rising locks position and facing even when movement is held
+PASS: Rising finishes at the exact 720-millisecond boundary
+PASS: The completion frame remains planted before returning movement control
+PASS: Held movement continues on the next standing tick without another press
+PASS: Inner fire seat 0 keeps both feet outside the flame radius
+PASS: Inner fire seat 0 faces the center after its radial correction
+PASS: A seat at the fire center uses the arrival-side radial direction
+PASS: Inner fire seat 1 keeps both feet outside the flame radius
+PASS: Inner fire seat 1 faces the center after its radial correction
+PASS: A near-center seat preserves its original radial angle
+PASS: Inner fire seat 2 keeps both feet outside the flame radius
+PASS: Inner fire seat 2 faces the center after its radial correction
+PASS: Inner fire seat 3 keeps both feet outside the flame radius
+PASS: Inner fire seat 3 faces the center after its radial correction
+PASS: A seat already on the safe inner rim stays at its exact position
+PASS: The exact 45-pixel interaction edge rests without moving the hero
+PASS: A point just outside the fire radius cannot start sitting
+PASS: Cancel at sitting millisecond 0 reverses from the same animation progress
+PASS: Early cancellation at 0 does not jump the foot anchor or facing
+PASS: Cancel at sitting millisecond 120 reverses from the same animation progress
+PASS: Early cancellation at 120 does not jump the foot anchor or facing
+PASS: Cancel at sitting millisecond 360 reverses from the same animation progress
+PASS: Early cancellation at 360 does not jump the foot anchor or facing
+PASS: Cancel at sitting millisecond 719 reverses from the same animation progress
+PASS: Early cancellation at 719 does not jump the foot anchor or facing
+PASS: Movement alone starts a full rise from seated idle
+PASS: A seated interaction cannot bypass rising through the chapter exit
+PASS: An action during rising is not queued into the gate
+PASS: A fresh chapter exit interaction works after the hero has stood up
+PASS: Reset clears the seated state and its breathing timer
+PASS: Camp arrival clears an interrupted rise before waking
+PASS: Rest cannot start during the camp waking sequence
+PASS: Real Canvas J starts the sitting animation at the fire
+PASS: Holding or repeating J does not restart rest, stand up, or repeat its reward
+PASS: An extra press event for an already held J is ignored
+PASS: Releasing and pressing J again starts the seated rise
+PASS: Held Canvas movement stays locked through the entire rise
+PASS: Held Canvas movement resumes after standing without becoming a roll
+PASS: Center-key input starts the same camp sitting state as J
+PASS: Canvas L and 2 cannot drink, cancel sitting, or consume a flask at camp
+PASS: J held during waking does not become a delayed rest when controls unlock
+PASS: A fresh post-waking J starts resting normally
+PASS: Pause freezes rest state 1 and discards paused J intent
+PASS: Pause preserves the seated foot anchor for state 1
+PASS: Unpause resumes rest state 1 by one fixed step
+PASS: Pause freezes rest state 2 and discards paused J intent
+PASS: Pause preserves the seated foot anchor for state 2
+PASS: Unpause resumes rest state 2 by one fixed step
+PASS: Pause freezes rest state 3 and discards paused J intent
+PASS: Pause preserves the seated foot anchor for state 3
+PASS: Unpause resumes rest state 3 by one fixed step
+ALL 134 BONFIRE CHECKS PASSED
+PASS: Defeat journey starts with an unresolved opening
+PASS: Defeat journey contains its initial Oathkeeper encounter
+PASS: A real opening boss attack starts the defeat branch
+PASS: Defeat permanently resolves the opening while preserving the real outcome
+PASS: Opening arrival wakes at the safe bonfire with full health and flasks
+PASS: Defeat cannot replay the first boss through old gate key 106
+PASS: Defeat cannot replay the first boss through old gate key 13
+PASS: Defeat cannot replay the first boss through old gate key 53
+PASS: Defeat enters the next chapter on camp visit 0
+PASS: Defeat keeps the opening resolved after chapter backtracking
+PASS: Opening arrival wakes at the safe bonfire with full health and flasks
+PASS: Defeat enters the next chapter on camp visit 1
+PASS: Defeat keeps the opening resolved after chapter backtracking
+PASS: Opening arrival wakes at the safe bonfire with full health and flasks
+PASS: Defeat combat reset cannot reopen the completed first encounter
+PASS: Defeat stale introduction completion cannot replay the boss
+PASS: Defeat stale doorway state redirects to the bonfire
+PASS: Opening arrival wakes at the safe bonfire with full health and flasks
+PASS: Defeat death in the next chapter respawns there without returning to Oathkeeper
+PASS: Defeat reaches the next boss ending with its opening result intact
+PASS: Defeat later Bellbound victory does not rewrite the first encounter outcome
+PASS: Defeat explicitly starting a new journey resets the opening and chapter progress
+PASS: A new journey gets its own single opening encounter
+PASS: Victory journey starts with an unresolved opening
+PASS: Victory journey contains its initial Oathkeeper encounter
+PASS: Victory permanently resolves the opening while preserving the real outcome
+PASS: Opening arrival wakes at the safe bonfire with full health and flasks
+PASS: Victory cannot replay the first boss through old gate key 106
+PASS: Victory cannot replay the first boss through old gate key 13
+PASS: Victory cannot replay the first boss through old gate key 53
+PASS: Victory enters the next chapter on camp visit 0
+PASS: Victory keeps the opening resolved after chapter backtracking
+PASS: Opening arrival wakes at the safe bonfire with full health and flasks
+PASS: Victory enters the next chapter on camp visit 1
+PASS: Victory keeps the opening resolved after chapter backtracking
+PASS: Opening arrival wakes at the safe bonfire with full health and flasks
+PASS: Victory combat reset cannot reopen the completed first encounter
+PASS: Victory stale introduction completion cannot replay the boss
+PASS: Victory stale doorway state redirects to the bonfire
+PASS: Opening arrival wakes at the safe bonfire with full health and flasks
+PASS: Victory death in the next chapter respawns there without returning to Oathkeeper
+PASS: Victory reaches the next boss ending with its opening result intact
+PASS: Victory later Bellbound victory does not rewrite the first encounter outcome
+PASS: Victory explicitly starting a new journey resets the opening and chapter progress
+PASS: A new journey gets its own single opening encounter
+ALL 45 ONE-TIME OPENING CHECKS PASSED
+PASS: The chapter does not start before the opening encounter resolves
+PASS: Oathkeeper defeat still unlocks the next chapter through the left camp exit
+PASS: Camp returns and reset cannot repeat the first boss or discard chapter progress
+PASS: A newly chosen journey clears all chapter progress and the opening completion flag
+PASS: Oathkeeper victory opens the same onward route as defeat
+PASS: The first step into the opening room starts its shorter 1.8-second quote
+PASS: The entrance quote lasts through its final millisecond
+PASS: The entrance quote expires at 1.8 seconds, before the first guard arrives
+PASS: Returning from the corridor does not repeat the entrance quote
+PASS: Returning from the bonfire does not repeat the entrance quote
+PASS: Respawning and waking in the room do not repeat the quote
+PASS: A newly started journey has its own first-visit quote
+PASS: Opening steps initially leave room to read the inscription in safety
+PASS: The opening first distant bell occurs after 500 ms
+PASS: The second distant bell does not arrive early
+PASS: The second distant bell occurs at 1800 ms
+PASS: No guard spawns before the entire 3500-ms grace period
+PASS: The first guard spawns at the exact grace boundary with normal health
+PASS: The first forward exit remains locked while its guard lives
+PASS: Two real sword collisions clear the first guard and its exit
+PASS: The corridor begins with one guard rather than overlapping both encounters
+PASS: The second corridor guard waits 699 ms after the first dies
+PASS: The second corridor guard enters exactly 700 ms after the first death
+PASS: The first torch lights through the same J context action as doors
+PASS: Torch light has a bounded 78-pixel effect radius
+PASS: The cleared corridor leads into the fallen bell court
+PASS: The courtyard lights the second persistent torch
+PASS: The optional courtyard flask is collected once
+PASS: Reusing the pickup location cannot duplicate its flask
+PASS: The courtyard inscription uses its own readable context notice
+PASS: Backtracking retains both defeated corridor guards and lit torches
+PASS: The chain chamber does not spawn its elite before the final torch
+PASS: Lighting the third torch awakens the 96-HP elite
+PASS: Three torches alone cannot open the bridge while the elite remains
+PASS: Actual sword windows defeat the elite without changing its health or difficulty
+PASS: The bridge requires both all three fires and the defeated elite
+PASS: The pre-boss checkpoint restores all health and flasks
+PASS: The final bridge reaches Bellbound's new arena
+PASS: Returning from the boss preserves the opened bridge and defeated elite
+PASS: An elite defeat without the third torch still cannot open the bridge
+PASS: Actual lit guard movement is slower and its visible-lit flag changes inside a torch's light
+PASS: The fallen bell leaves the upper courtyard route traversable
+PASS: The fallen bell leaves the lower courtyard route traversable
+PASS: A dodge roll cannot pass through the solid courtyard bell
+PASS: Collision substeps also prevent a long movement update from tunneling through the bell
+PASS: Guard warning locks its direction and origin while the hero changes position
+PASS: Guard warning cannot damage before all 700 ms have elapsed
+PASS: Guard live collision damages the hero inside its disclosed wedge
+PASS: A guard can damage only once in each attack window
+PASS: The guard wedge has a real safe rear and a recovery opening
+PASS: A chapter death enters its own scripted collapse state
+PASS: Chapter death freezes combat and inputs through the black hold
+PASS: Before the elite checkpoint, death respawns at the steps at the exact transition boundary
+PASS: Death preserves lit fires, pickups, reading and chapter access
+PASS: Chapter respawn locks movement and combat for its waking sequence
+PASS: The final waking tick completes before accepting gameplay input
+PASS: The next awake tick restores chapter movement
+PASS: Boss death returns to the unlocked pre-boss checkpoint with its three fires intact
+PASS: Held inputs across automatic chapter respawn do not become movement or attacks after waking
+PASS: Pause freezes chapter guard spawning and room progression
+PASS: Real Canvas J lights a torch without also starting a sword swing
+PASS: Existing double-tap controls produce a real roll inside the new chapter
+PASS: Actual sword windows defeat the guard without changing its health or difficulty
+PASS: Actual sword windows defeat the guard without changing its health or difficulty
+PASS: Actual sword windows defeat the guard without changing its health or difficulty
+PASS: Actual sword windows defeat the elite without changing its health or difficulty
+PASS: The complete five-screen script reaches the boss through real guard defeats, three fires and checkpoint rest
+PASS: Scripted safe attack positions finish the real 600-HP boss with its AI and phase obstacle enabled
+PASS: The final real sword hit awards exactly one Dawn Shard and starts the red-light ending
+PASS: The ending freezes gameplay and cannot be skipped before its minimum duration
+PASS: Continuing the completed ending never duplicates its fragment
+PASS: A fresh ending confirmation returns to camp with the fragment and access preserved
+PASS: Revisiting the completed summit cannot award another fragment
+ALL 73 BELFRY CHECKS PASSED
+PASS: Bellbound starts with 600 HP and an unobstructed arena
+PASS: Bellbound move 0 enters a disclosed warning before damage
+PASS: Bellbound move 0 cannot damage during its warning
+PASS: Bellbound move 0 locks direction and target instead of tracking the hero
+PASS: Bellbound move 0 separates the disclosed mask from live damage
+PASS: Bellbound move 0 activates without an early warning hit
+PASS: Bellbound move 0 damages a body inside its marked area
+PASS: Bellbound move 0 cannot hit the same hero twice in one active window
+PASS: Bellbound move 0 exposes a recovery opening
+PASS: Bellbound move 0 preserves its full recovery window
+PASS: Bellbound move 0 resumes only at the exact recovery boundary
+PASS: Bellbound move 1 enters a disclosed warning before damage
+PASS: Bellbound move 1 cannot damage during its warning
+PASS: Bellbound move 1 locks direction and target instead of tracking the hero
+PASS: Bellbound move 1 separates the disclosed mask from live damage
+PASS: Bellbound move 1 activates without an early warning hit
+PASS: Bellbound move 1 damages a body inside its marked area
+PASS: Bellbound move 1 cannot hit the same hero twice in one active window
+PASS: Bellbound move 1 exposes a recovery opening
+PASS: Bellbound move 1 preserves its full recovery window
+PASS: Bellbound move 1 resumes only at the exact recovery boundary
+PASS: Bellbound move 2 enters a disclosed warning before damage
+PASS: Bellbound move 2 cannot damage during its warning
+PASS: Bellbound move 2 locks direction and target instead of tracking the hero
+PASS: Bellbound move 2 separates the disclosed mask from live damage
+PASS: Bellbound move 2 activates without an early warning hit
+PASS: Bellbound move 2 damages a body inside its marked area
+PASS: Bellbound move 2 cannot hit the same hero twice in one active window
+PASS: Bellbound move 2 exposes a recovery opening
+PASS: Bellbound move 2 preserves its full recovery window
+PASS: Bellbound move 2 resumes only at the exact recovery boundary
+PASS: Bellbound move 0 enters a disclosed warning before damage
+PASS: Sweep has an exact 85-pixel outer edge
+PASS: Sweep leaves a real safe space behind the boss including the hero body radius
+PASS: Bellbound move 1 enters a disclosed warning before damage
+PASS: Locked slam can be avoided by leaving its target circle before it lands
+PASS: Bellbound move 1 enters a disclosed warning before damage
+PASS: The existing full-roll immunity also blocks Bellbound damage
+PASS: An avoided Bellbound hit remains dangerous after rolling ends
+PASS: Bellbound move 2 enters a disclosed warning before damage
+PASS: Toll discloses sequential ring 0 separately
+PASS: Toll ring 0 has a safe hollow center
+PASS: Toll ring 0 retains its entire individual warning
+PASS: Toll ring 0 leaves the central body footprint unharmed
+PASS: Toll discloses sequential ring 1 separately
+PASS: Toll ring 1 has a safe hollow center
+PASS: Toll removes the previous ring and refreshes its disclosed mask
+PASS: Toll ring 1 retains its entire individual warning
+PASS: Toll ring 1 leaves the central body footprint unharmed
+PASS: Toll discloses sequential ring 2 separately
+PASS: Toll ring 2 has a safe hollow center
+PASS: Toll removes the previous ring and refreshes its disclosed mask
+PASS: Toll ring 2 retains its entire individual warning
+PASS: Toll ring 2 leaves the central body footprint unharmed
+PASS: Toll discloses sequential ring 3 separately
+PASS: Toll ring 3 has a safe hollow center
+PASS: Toll removes the previous ring and refreshes its disclosed mask
+PASS: Toll ring 3 retains its entire individual warning
+PASS: Toll ring 3 leaves the central body footprint unharmed
+PASS: Toll recovers only after all four outward rings have finished
+PASS: Bellbound's real AI selects all three moves in its attack sequence
+PASS: Bellbound move 0 enters a disclosed warning before damage
+PASS: Crossing half HP never cancels an already disclosed warning
+PASS: The current attack finishes before the phase transition
+PASS: Half HP begins phase two at the next recovery tick
+PASS: Phase two visibly withdraws before introducing the physical fallen bell
+PASS: The bell is not solid before the final transition millisecond
+PASS: The fallen bell becomes a persistent physical obstacle at the phase boundary
+PASS: The falling bell safely separates both actors without trapping or damaging the hero
+PASS: A hero displaced by the fallen bell can immediately walk away
+PASS: Rolling obeys the same physical bell collision as walking
+PASS: Bellbound can detour around the fallen bell from northern side -1 without getting stuck
+PASS: Bellbound can detour around the fallen bell from northern side 1 without getting stuck
+PASS: Nonpositive hits do not damage Bellbound
+PASS: Bellbound dies once, stops simulation and removes all active hazards
+ALL 75 BELLBOUND CHECKS PASSED
+PASS: Victory fade-out is completely black with no HUD or actor leaks.
+PASS: Defeat fade-out is completely black with no HUD or actor leaks.
+PASS: Camp arrival fade-in is completely black with no HUD or actor leaks.
+PASS: Camp composite is independent of boss, hazards and combat HUD state.
+Rendered 30 real MIDP frames successfully.
+PASS: The small entrance caption stays in the lower half without covering the HUD or upper scene
+PASS: Reentering the room at time zero renders without the already-seen caption
+PASS: Room 0 does not accumulate ash, flame or drawing remnants
+PASS: Room 0 preserves its cached background while drawing
+PASS: Room 1 does not accumulate ash, flame or drawing remnants
+PASS: Room 1 preserves its cached background while drawing
+PASS: Room 2 does not accumulate ash, flame or drawing remnants
+PASS: Room 2 preserves its cached background while drawing
+PASS: Room 3 does not accumulate ash, flame or drawing remnants
+PASS: Room 3 preserves its cached background while drawing
+PASS: Room 4 does not accumulate ash, flame or drawing remnants
+PASS: Room 4 preserves its cached background while drawing
+PASS: All five chapter screens have distinct scenery
+PASS: Disclosed hazard geometry remains bright and visible over the dark scenery
+PASS: An unchanged hazard reuses its raster cache
+PASS: Disclosed hazard geometry remains bright and visible over the dark scenery
+PASS: An unchanged hazard reuses its raster cache
+PASS: Lighting a brazier rebuilds the warm floor and reveals the wall scratches
+PASS: Hidden and revealed guards have visibly different armour
+PASS: Disclosed hazard geometry remains bright and visible over the dark scenery
+PASS: An unchanged hazard reuses its raster cache
+PASS: Ending a guard attack clears all stale warning pixels
+PASS: Disclosed hazard geometry remains bright and visible over the dark scenery
+PASS: An unchanged hazard reuses its raster cache
+PASS: Disclosed hazard geometry remains bright and visible over the dark scenery
+PASS: An unchanged hazard reuses its raster cache
+PASS: Disclosed hazard geometry remains bright and visible over the dark scenery
+PASS: An unchanged hazard reuses its raster cache
+PASS: The roof bell disappears when it falls and does not reappear above the new obstacle
+PASS: Retrying the boss restores the hanging roof bell and initial arena
+PASS: The false dawn moves and breathes after the shard is obtained
+PASS: Chapter wake fade is completely black with no HUD or actor leaks.
+PASS: Chapter entrance, phase change, ending and checkpoint waking render through real MIDP graphics
+ALL 32 BELFRY RENDER CHECKS PASSED; 22 chapter frames exported
+PASS: All 24 rest poses use binary alpha, exact idle transitions, stable soles and transparent contrasting backgrounds.
+PASS: Sitting/standing retain the same pose when cancelled, breathing loops repeat, and rest stays isolated from combat.
+PASS: Exported resting beside the bonfire from all four directions and safely outside its center.
+PASS: Walk time advances only when guard movement actually changes its position
+PASS: A seeking guard standing at its stop radius uses idle instead of moonwalking
+PASS: Warning locks the enemy position and walk clock
+PASS: Recovery does not consume locomotion frames
+PASS: A real sword hit starts visual recoil without changing enemy position or attack state
+PASS: Hit feedback retains its final millisecond
+PASS: Hit feedback expires after 180ms
+PASS: The lethal hit clears combat and hazards immediately while starting a visual corpse at time zero
+PASS: The corpse remains anchored independently of the next guard's spawn
+PASS: Corpse visibility ends at the exact 720ms boundary
+PASS: Room transitions clear unused enemies, old corpses and animation clocks
+PASS: Pausing the real Canvas freezes enemy hit and collapse clocks
+PASS: Enemy type 0 keeps 32 independent 128x80 weapon/body cells
+PASS: All 32 poses of type 0 preserve alpha, direction, planted ground, full weapon and the same silhouette in darkness
+PASS: Enemy type 1 keeps 32 independent 128x80 weapon/body cells
+PASS: All 32 poses of type 1 preserve alpha, direction, planted ground, full weapon and the same silhouette in darkness
+PASS: Lit/dark atlases are reused without rebuilding pixels for each frame
+PASS: Missing atlases return control to the native guard fallback
+PASS: A lit enemy visibly recoils and flashes when hit
+PASS: Expired hit feedback restores the exact unhurt pose
+PASS: Death visibly progresses through recoil, lowered attack and settled fallen poses
+PASS: The settled fallen pose holds without flicker until the hide boundary
+PASS: An expired corpse draws no pixels at 720ms
+PASS: Drawing is stable at a fixed tick and cannot mutate model clocks
+PASS: Exported all eight production poses in all four directions for both enemy types
+ALL 25 ENEMY ANIMATION CHECKS PASSED
+PASS: Bellbound has 40 binary-alpha body poses, four facings, planted 70px idle and articulated walking.
+PASS: Windup, sweep, slam, toll, phase brace, recovery and collapse select the production atlas.
+PASS: Native slam target, timed sweep arc and toll bell retain their exact gameplay coordinates.
+PASS: Actual movement drives walking; stops, blocked movement, pauses and retries preserve the correct visual clocks.
+PASS: Real hits produce 180ms body/grip recoil and sparks without changing combat state, timing or mace targets.
 PASS: Knight and boss have four distinct facings and alternating walk frames.
 PASS: Sword, roll, healing and hurt render safely in every facing.
 PASS: Native skeleton fallback is 88px versus 44px hero; exposed bones in four distinct directions.

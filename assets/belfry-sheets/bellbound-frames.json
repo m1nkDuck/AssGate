@@ -1,0 +1,1113 @@
+{
+  "source": "bellbound_body.png",
+  "source_sha256": "d2d1e92342c475840ed3232f511812618461cdf8ee3eef56b33f6acff993fdce",
+  "cell_size": [
+    112,
+    112
+  ],
+  "anchor": [
+    56,
+    100
+  ],
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "columns": [
+    "idle",
+    "walk_contact_right",
+    "walk_pass_right",
+    "walk_contact_left",
+    "walk_pass_left",
+    "windup",
+    "sweep",
+    "slam",
+    "toll_brace",
+    "fallen"
+  ],
+  "weapon": "Native BellboundArt chain and bell remain tied to combat geometry",
+  "frames": [
+    {
+      "row": 0,
+      "column": 0,
+      "source_box": [
+        14,
+        56,
+        175,
+        220
+      ],
+      "source_axis": 82,
+      "scale": 0.4268292682926829,
+      "source_hand": [
+        158,
+        160
+      ],
+      "mirror": false,
+      "hand_offset": [
+        26,
+        -25
+      ],
+      "packed_visible_bounds": [
+        21,
+        31,
+        90,
+        101
+      ]
+    },
+    {
+      "row": 0,
+      "column": 1,
+      "source_box": [
+        190,
+        56,
+        336,
+        219
+      ],
+      "source_axis": 72,
+      "scale": 0.4268292682926829,
+      "source_hand": [
+        319,
+        159
+      ],
+      "mirror": false,
+      "hand_offset": [
+        24,
+        -25
+      ],
+      "packed_visible_bounds": [
+        25,
+        31,
+        87,
+        101
+      ]
+    },
+    {
+      "row": 0,
+      "column": 2,
+      "source_box": [
+        356,
+        57,
+        505,
+        219
+      ],
+      "source_axis": 74,
+      "scale": 0.4268292682926829,
+      "source_hand": [
+        488,
+        132
+      ],
+      "mirror": false,
+      "hand_offset": [
+        24,
+        -36
+      ],
+      "packed_visible_bounds": [
+        24,
+        32,
+        88,
+        101
+      ]
+    },
+    {
+      "row": 0,
+      "column": 3,
+      "source_box": [
+        528,
+        57,
+        678,
+        220
+      ],
+      "source_axis": 74,
+      "scale": 0.4268292682926829,
+      "source_hand": [
+        659,
+        160
+      ],
+      "mirror": false,
+      "hand_offset": [
+        24,
+        -25
+      ],
+      "packed_visible_bounds": [
+        24,
+        31,
+        88,
+        101
+      ]
+    },
+    {
+      "row": 0,
+      "column": 4,
+      "source_box": [
+        698,
+        56,
+        847,
+        220
+      ],
+      "source_axis": 74,
+      "scale": 0.4268292682926829,
+      "source_hand": [
+        831,
+        135
+      ],
+      "mirror": false,
+      "hand_offset": [
+        25,
+        -35
+      ],
+      "packed_visible_bounds": [
+        24,
+        31,
+        88,
+        101
+      ]
+    },
+    {
+      "row": 0,
+      "column": 5,
+      "source_box": [
+        852,
+        15,
+        1007,
+        220
+      ],
+      "source_axis": 61,
+      "scale": 0.4268292682926829,
+      "source_hand": [
+        889,
+        31
+      ],
+      "mirror": true,
+      "hand_offset": [
+        24,
+        -80
+      ],
+      "packed_visible_bounds": [
+        30,
+        13,
+        96,
+        101
+      ]
+    },
+    {
+      "row": 0,
+      "column": 6,
+      "source_box": [
+        1026,
+        65,
+        1185,
+        220
+      ],
+      "source_axis": 73,
+      "scale": 0.4268292682926829,
+      "source_hand": [
+        1091,
+        158
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -3,
+        -25
+      ],
+      "packed_visible_bounds": [
+        25,
+        35,
+        93,
+        101
+      ]
+    },
+    {
+      "row": 0,
+      "column": 7,
+      "source_box": [
+        1193,
+        74,
+        1368,
+        220
+      ],
+      "source_axis": 90,
+      "scale": 0.4268292682926829,
+      "source_hand": [
+        1286,
+        207
+      ],
+      "mirror": false,
+      "hand_offset": [
+        2,
+        -4
+      ],
+      "packed_visible_bounds": [
+        18,
+        39,
+        93,
+        101
+      ]
+    },
+    {
+      "row": 0,
+      "column": 8,
+      "source_box": [
+        1379,
+        55,
+        1571,
+        220
+      ],
+      "source_axis": 93,
+      "scale": 0.4268292682926829,
+      "source_hand": [
+        1407,
+        75
+      ],
+      "mirror": true,
+      "hand_offset": [
+        30,
+        -60
+      ],
+      "packed_visible_bounds": [
+        16,
+        31,
+        98,
+        101
+      ]
+    },
+    {
+      "row": 0,
+      "column": 9,
+      "source_box": [
+        1568,
+        127,
+        1766,
+        224
+      ],
+      "source_axis": 98,
+      "scale": 0.4268292682926829,
+      "source_hand": [
+        1585,
+        206
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -35,
+        -6
+      ],
+      "packed_visible_bounds": [
+        14,
+        60,
+        99,
+        101
+      ]
+    },
+    {
+      "row": 1,
+      "column": 0,
+      "source_box": [
+        27,
+        270,
+        155,
+        433
+      ],
+      "source_axis": 65,
+      "scale": 0.4294478527607362,
+      "source_hand": [
+        40,
+        380
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -22,
+        -22
+      ],
+      "packed_visible_bounds": [
+        28,
+        31,
+        83,
+        101
+      ]
+    },
+    {
+      "row": 1,
+      "column": 1,
+      "source_box": [
+        195,
+        270,
+        319,
+        430
+      ],
+      "source_axis": 63,
+      "scale": 0.4294478527607362,
+      "source_hand": [
+        223,
+        372
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -15,
+        -24
+      ],
+      "packed_visible_bounds": [
+        29,
+        32,
+        82,
+        101
+      ]
+    },
+    {
+      "row": 1,
+      "column": 2,
+      "source_box": [
+        361,
+        266,
+        478,
+        431
+      ],
+      "source_axis": 63,
+      "scale": 0.4294478527607362,
+      "source_hand": [
+        380,
+        365
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -19,
+        -27
+      ],
+      "packed_visible_bounds": [
+        29,
+        30,
+        79,
+        101
+      ]
+    },
+    {
+      "row": 1,
+      "column": 3,
+      "source_box": [
+        534,
+        268,
+        666,
+        432
+      ],
+      "source_axis": 65,
+      "scale": 0.4294478527607362,
+      "source_hand": [
+        546,
+        373
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -23,
+        -24
+      ],
+      "packed_visible_bounds": [
+        28,
+        31,
+        85,
+        101
+      ]
+    },
+    {
+      "row": 1,
+      "column": 4,
+      "source_box": [
+        705,
+        268,
+        824,
+        431
+      ],
+      "source_axis": 66,
+      "scale": 0.4294478527607362,
+      "source_hand": [
+        732,
+        369
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -16,
+        -26
+      ],
+      "packed_visible_bounds": [
+        28,
+        31,
+        79,
+        101
+      ]
+    },
+    {
+      "row": 1,
+      "column": 5,
+      "source_box": [
+        855,
+        231,
+        1001,
+        431
+      ],
+      "source_axis": 81,
+      "scale": 0.4294478527607362,
+      "source_hand": [
+        887,
+        247
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -21,
+        -78
+      ],
+      "packed_visible_bounds": [
+        21,
+        15,
+        84,
+        101
+      ]
+    },
+    {
+      "row": 1,
+      "column": 6,
+      "source_box": [
+        1007,
+        270,
+        1184,
+        431
+      ],
+      "source_axis": 82,
+      "scale": 0.4294478527607362,
+      "source_hand": [
+        1102,
+        367
+      ],
+      "mirror": false,
+      "hand_offset": [
+        6,
+        -26
+      ],
+      "packed_visible_bounds": [
+        21,
+        32,
+        97,
+        101
+      ]
+    },
+    {
+      "row": 1,
+      "column": 7,
+      "source_box": [
+        1190,
+        289,
+        1379,
+        436
+      ],
+      "source_axis": 88,
+      "scale": 0.4294478527607362,
+      "source_hand": [
+        1261,
+        422
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -8,
+        -5
+      ],
+      "packed_visible_bounds": [
+        18,
+        38,
+        99,
+        101
+      ]
+    },
+    {
+      "row": 1,
+      "column": 8,
+      "source_box": [
+        1387,
+        256,
+        1558,
+        433
+      ],
+      "source_axis": 89,
+      "scale": 0.4294478527607362,
+      "source_hand": [
+        1410,
+        278
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -28,
+        -66
+      ],
+      "packed_visible_bounds": [
+        18,
+        25,
+        91,
+        101
+      ]
+    },
+    {
+      "row": 1,
+      "column": 9,
+      "source_box": [
+        1566,
+        343,
+        1766,
+        437
+      ],
+      "source_axis": 99,
+      "scale": 0.4294478527607362,
+      "source_hand": [
+        1750,
+        423
+      ],
+      "mirror": false,
+      "hand_offset": [
+        36,
+        -5
+      ],
+      "packed_visible_bounds": [
+        13,
+        61,
+        99,
+        101
+      ]
+    },
+    {
+      "row": 2,
+      "column": 0,
+      "source_box": [
+        30,
+        484,
+        161,
+        651
+      ],
+      "source_axis": 64,
+      "scale": 0.41916167664670656,
+      "source_hand": [
+        146,
+        588
+      ],
+      "mirror": false,
+      "hand_offset": [
+        22,
+        -25
+      ],
+      "packed_visible_bounds": [
+        29,
+        31,
+        84,
+        101
+      ]
+    },
+    {
+      "row": 2,
+      "column": 1,
+      "source_box": [
+        186,
+        480,
+        322,
+        651
+      ],
+      "source_axis": 68,
+      "scale": 0.41916167664670656,
+      "source_hand": [
+        301,
+        575
+      ],
+      "mirror": false,
+      "hand_offset": [
+        19,
+        -31
+      ],
+      "packed_visible_bounds": [
+        27,
+        29,
+        84,
+        101
+      ]
+    },
+    {
+      "row": 2,
+      "column": 2,
+      "source_box": [
+        367,
+        482,
+        484,
+        650
+      ],
+      "source_axis": 54,
+      "scale": 0.41916167664670656,
+      "source_hand": [
+        469,
+        572
+      ],
+      "mirror": false,
+      "hand_offset": [
+        20,
+        -31
+      ],
+      "packed_visible_bounds": [
+        33,
+        31,
+        82,
+        101
+      ]
+    },
+    {
+      "row": 2,
+      "column": 3,
+      "source_box": [
+        524,
+        483,
+        653,
+        650
+      ],
+      "source_axis": 62,
+      "scale": 0.41916167664670656,
+      "source_hand": [
+        638,
+        588
+      ],
+      "mirror": false,
+      "hand_offset": [
+        22,
+        -25
+      ],
+      "packed_visible_bounds": [
+        30,
+        31,
+        84,
+        101
+      ]
+    },
+    {
+      "row": 2,
+      "column": 4,
+      "source_box": [
+        698,
+        483,
+        821,
+        649
+      ],
+      "source_axis": 54,
+      "scale": 0.41916167664670656,
+      "source_hand": [
+        795,
+        580
+      ],
+      "mirror": false,
+      "hand_offset": [
+        18,
+        -28
+      ],
+      "packed_visible_bounds": [
+        33,
+        31,
+        85,
+        101
+      ]
+    },
+    {
+      "row": 2,
+      "column": 5,
+      "source_box": [
+        847,
+        443,
+        1001,
+        649
+      ],
+      "source_axis": 61,
+      "scale": 0.41916167664670656,
+      "source_hand": [
+        973,
+        457
+      ],
+      "mirror": false,
+      "hand_offset": [
+        27,
+        -79
+      ],
+      "packed_visible_bounds": [
+        30,
+        15,
+        95,
+        101
+      ]
+    },
+    {
+      "row": 2,
+      "column": 6,
+      "source_box": [
+        1009,
+        490,
+        1183,
+        649
+      ],
+      "source_axis": 91,
+      "scale": 0.41916167664670656,
+      "source_hand": [
+        1126,
+        591
+      ],
+      "mirror": false,
+      "hand_offset": [
+        11,
+        -24
+      ],
+      "packed_visible_bounds": [
+        18,
+        34,
+        91,
+        101
+      ]
+    },
+    {
+      "row": 2,
+      "column": 7,
+      "source_box": [
+        1187,
+        511,
+        1369,
+        654
+      ],
+      "source_axis": 101,
+      "scale": 0.41916167664670656,
+      "source_hand": [
+        1308,
+        635
+      ],
+      "mirror": false,
+      "hand_offset": [
+        9,
+        -7
+      ],
+      "packed_visible_bounds": [
+        14,
+        41,
+        90,
+        101
+      ]
+    },
+    {
+      "row": 2,
+      "column": 8,
+      "source_box": [
+        1390,
+        466,
+        1553,
+        651
+      ],
+      "source_axis": 72,
+      "scale": 0.41916167664670656,
+      "source_hand": [
+        1527,
+        486
+      ],
+      "mirror": false,
+      "hand_offset": [
+        27,
+        -69
+      ],
+      "packed_visible_bounds": [
+        26,
+        23,
+        94,
+        101
+      ]
+    },
+    {
+      "row": 2,
+      "column": 9,
+      "source_box": [
+        1563,
+        559,
+        1764,
+        655
+      ],
+      "source_axis": 100,
+      "scale": 0.41916167664670656,
+      "source_hand": [
+        1580,
+        638
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -35,
+        -6
+      ],
+      "packed_visible_bounds": [
+        14,
+        61,
+        98,
+        101
+      ]
+    },
+    {
+      "row": 3,
+      "column": 0,
+      "source_box": [
+        15,
+        690,
+        170,
+        855
+      ],
+      "source_axis": 76,
+      "scale": 0.42424242424242425,
+      "source_hand": [
+        30,
+        790
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -26,
+        -27
+      ],
+      "packed_visible_bounds": [
+        24,
+        31,
+        90,
+        101
+      ]
+    },
+    {
+      "row": 3,
+      "column": 1,
+      "source_box": [
+        183,
+        686,
+        329,
+        855
+      ],
+      "source_axis": 73,
+      "scale": 0.42424242424242425,
+      "source_hand": [
+        195,
+        788
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -26,
+        -28
+      ],
+      "packed_visible_bounds": [
+        25,
+        29,
+        87,
+        101
+      ]
+    },
+    {
+      "row": 3,
+      "column": 2,
+      "source_box": [
+        344,
+        684,
+        502,
+        855
+      ],
+      "source_axis": 83,
+      "scale": 0.42424242424242425,
+      "source_hand": [
+        362,
+        788
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -27,
+        -28
+      ],
+      "packed_visible_bounds": [
+        21,
+        28,
+        88,
+        101
+      ]
+    },
+    {
+      "row": 3,
+      "column": 3,
+      "source_box": [
+        522,
+        686,
+        667,
+        855
+      ],
+      "source_axis": 72,
+      "scale": 0.42424242424242425,
+      "source_hand": [
+        534,
+        788
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -26,
+        -28
+      ],
+      "packed_visible_bounds": [
+        25,
+        29,
+        87,
+        101
+      ]
+    },
+    {
+      "row": 3,
+      "column": 4,
+      "source_box": [
+        686,
+        686,
+        839,
+        855
+      ],
+      "source_axis": 76,
+      "scale": 0.42424242424242425,
+      "source_hand": [
+        704,
+        789
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -24,
+        -27
+      ],
+      "packed_visible_bounds": [
+        24,
+        29,
+        89,
+        101
+      ]
+    },
+    {
+      "row": 3,
+      "column": 5,
+      "source_box": [
+        852,
+        662,
+        1014,
+        855
+      ],
+      "source_axis": 101,
+      "scale": 0.42424242424242425,
+      "source_hand": [
+        885,
+        680
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -29,
+        -73
+      ],
+      "packed_visible_bounds": [
+        13,
+        19,
+        82,
+        101
+      ]
+    },
+    {
+      "row": 3,
+      "column": 6,
+      "source_box": [
+        1028,
+        701,
+        1190,
+        855
+      ],
+      "source_axis": 83,
+      "scale": 0.42424242424242425,
+      "source_hand": [
+        1045,
+        780
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -28,
+        -30
+      ],
+      "packed_visible_bounds": [
+        21,
+        36,
+        90,
+        101
+      ]
+    },
+    {
+      "row": 3,
+      "column": 7,
+      "source_box": [
+        1194,
+        718,
+        1386,
+        855
+      ],
+      "source_axis": 92,
+      "scale": 0.42424242424242425,
+      "source_hand": [
+        1217,
+        822
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -29,
+        -13
+      ],
+      "packed_visible_bounds": [
+        17,
+        43,
+        98,
+        101
+      ]
+    },
+    {
+      "row": 3,
+      "column": 8,
+      "source_box": [
+        1388,
+        673,
+        1554,
+        855
+      ],
+      "source_axis": 96,
+      "scale": 0.42424242424242425,
+      "source_hand": [
+        1412,
+        691
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -31,
+        -68
+      ],
+      "packed_visible_bounds": [
+        15,
+        24,
+        85,
+        101
+      ]
+    },
+    {
+      "row": 3,
+      "column": 9,
+      "source_box": [
+        1563,
+        766,
+        1765,
+        857
+      ],
+      "source_axis": 100,
+      "scale": 0.42424242424242425,
+      "source_hand": [
+        1581,
+        839
+      ],
+      "mirror": false,
+      "hand_offset": [
+        -34,
+        -7
+      ],
+      "packed_visible_bounds": [
+        14,
+        62,
+        100,
+        101
+      ]
+    }
+  ]
+}
